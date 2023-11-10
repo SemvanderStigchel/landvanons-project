@@ -8,7 +8,12 @@
     <title>Document</title>
 </head>
 <body>
-<h1>Hallo</h1>
-<a href="{{route('posts.index')}}">Nieuws Pagina</a>
+<h1>Het laatste Land van Ons nieuws!</h1>
+@foreach($posts as $post)
+    <h3>{{$post->title}}</h3>
+    <p>{{$post->subtitle}}</p>
+    <a href="{{route('posts.show', $post)}}">Lees het artikel!</a>
+@endforeach
+<a href="{{route('posts.create')}}">Create post pagina(normaal alleen voor admin)</a>
 </body>
 </html>
