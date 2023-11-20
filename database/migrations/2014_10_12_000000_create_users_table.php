@@ -18,7 +18,7 @@ return new class extends Migration
             $table->string('phone');
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
-            $table->string('image');
+            $table->string('image')->nullable();
             $table->tinyInteger('role');
             $table->bigInteger('points');
             $table->rememberToken();
