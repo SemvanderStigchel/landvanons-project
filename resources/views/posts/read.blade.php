@@ -12,8 +12,15 @@
 @foreach($posts as $post)
     <h3>{{$post->title}}</h3>
     <p>{{$post->subtitle}}</p>
+    @foreach($post->categories as $category)
+    <span>{{$category->name}}</span>
+    @endforeach
     <a href="{{route('posts.show', $post)}}">Lees het artikel!</a>
 @endforeach
-<a href="{{route('posts.create')}}">Create post pagina(normaal alleen voor admin)</a>
+@if(Auth::user()->role === 2)
+    <footer>
+        <a href="{{route('posts.create')}}">Create post pagina</a>
+    </footer>
+@endif
 </body>
 </html>

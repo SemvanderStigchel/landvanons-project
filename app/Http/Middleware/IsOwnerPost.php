@@ -8,19 +8,17 @@ use Closure;
 use Illuminate\Http\Request;
 use Symfony\Component\HttpFoundation\Response;
 
-class IsOwner
+class IsOwnerPost
 {
     /**
      * Handle an incoming request.
      *
      * @param  \Closure(\Illuminate\Http\Request): (\Symfony\Component\HttpFoundation\Response)  $next
      */
-    public function handle(Request $request, Closure $next, Post $post, Task $task): Response
+    public function handle(Request $request, Closure $next): Response
     {
+        $post = $request->route('post');
         if (\Auth::user()->id === $post->user_id)
-        {
-            return $next($request);
-        } elseif (\Auth::user()->id === $task->user_id)
         {
             return $next($request);
         }

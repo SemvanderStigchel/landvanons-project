@@ -14,7 +14,7 @@ class PostController extends Controller
     public function __construct()
     {
         $this->middleware(['auth', 'admin'])->except('index', 'show');
-        $this->middleware('owner')->except('index', 'show', 'create', 'store');
+        $this->middleware('owner-post')->except('index', 'show', 'create', 'store');
     }
     public function index()
     {
@@ -48,6 +48,8 @@ class PostController extends Controller
         $post->title = $request->input('title');
         $post->subtitle = $request->input('subtitle');
         $post->article = $request->input('article');
+        $post->image = $request->input('image');
+        $post->user_id = \Auth::user()->id;
 
         if ($post->save())
         {
@@ -90,6 +92,8 @@ class PostController extends Controller
         $post->title = $request->input('title');
         $post->subtitle = $request->input('subtitle');
         $post->article = $request->input('article');
+        $post->image = $request->input('image');
+        $post->user_id = \Auth::user()->id;
 
         if ($post->save())
         {

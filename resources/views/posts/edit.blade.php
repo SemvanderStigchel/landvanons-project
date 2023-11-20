@@ -9,7 +9,7 @@
 </head>
 <body>
 <h1>Edit post: '{{$post->title}}'</h1>
-<form action="{{route('posts.edit', $post)}}" method="POST" enctype="multipart/form-data">
+<form action="{{route('posts.update', $post)}}" method="POST" enctype="multipart/form-data">
     @method('PUT')
     @csrf
     <label for="title">Titel*</label>

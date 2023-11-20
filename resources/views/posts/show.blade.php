@@ -11,12 +11,13 @@
 <h1>{{$post->title}}</h1>
 <p>{{$post->subtitle}}</p>
 <p>{{$post->article}}</p>
-
-<a href="{{route('posts.edit', $post)}}">Edit deze post(normaal alleen voor admins)</a>
-<form action="{{route('posts.destroy', $post)}}" method="POST">
-    @csrf
-    @method('DELETE')
-<button type="submit">Verwijder deze post(normaal alleen voor admins)</button>
-</form>
+@if(Auth::user()->role === 2)
+    <a href="{{route('posts.edit', $post)}}">Edit deze post</a>
+    <form action="{{route('posts.destroy', $post)}}" method="POST">
+        @csrf
+        @method('DELETE')
+        <button type="submit">Verwijder deze post</button>
+    </form>
+@endif
 </body>
 </html>

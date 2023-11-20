@@ -3,7 +3,7 @@
 namespace App\Http;
 
 use App\Http\Middleware\IsAdmin;
-use App\Http\Middleware\IsOwner;
+use App\Http\Middleware\IsOwnerPost;
 use Illuminate\Foundation\Http\Kernel as HttpKernel;
 
 class Kernel extends HttpKernel
@@ -67,6 +67,6 @@ class Kernel extends HttpKernel
         'throttle' => \Illuminate\Routing\Middleware\ThrottleRequests::class,
         'verified' => \Illuminate\Auth\Middleware\EnsureEmailIsVerified::class,
         'admin' => IsAdmin::class,
-        'owner' => IsOwner::class,
+        'owner-post' => IsOwnerPost::class,
     ];
 }
