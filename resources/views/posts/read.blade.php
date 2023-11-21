@@ -12,6 +12,7 @@
 @foreach($posts as $post)
     <h3>{{$post->title}}</h3>
     <p>{{$post->subtitle}}</p>
+    <img src="{{asset('uploads/posts/'.$post->image)}}" alt="Uploaded image">
     @foreach($post->categories as $category)
     <span>{{$category->name}}</span>
     @endforeach

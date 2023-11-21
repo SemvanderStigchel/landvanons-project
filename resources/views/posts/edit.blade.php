@@ -34,7 +34,8 @@
     @enderror
 
     <label for="image">Foto*</label>
-    <input type="image" id="image" name="image" alt="Upload photo">
+    <input type="file" id="image" name="image" alt="Upload photo">
+    <img src="{{asset('uploads/posts/'.$post->image)}}" alt="Uploaded image">
     @error('image')
     <div>Error</div>
     @enderror

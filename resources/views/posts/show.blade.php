@@ -11,6 +11,7 @@
 <h1>{{$post->title}}</h1>
 <p>{{$post->subtitle}}</p>
 <p>{{$post->article}}</p>
+<img src="{{asset('uploads/posts/'.$post->image)}}" alt="Uploaded image">
 @if(Auth::user()->role === 2)
     <a href="{{route('posts.edit', $post)}}">Edit deze post</a>
     <form action="{{route('posts.destroy', $post)}}" method="POST">

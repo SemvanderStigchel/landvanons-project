@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Models\Category;
 use App\Models\Post;
+use Auth;
+use File;
 use Illuminate\Http\Request;
 
 class PostController extends Controller
@@ -40,7 +42,7 @@ class PostController extends Controller
             'title' => 'required|max:150',
             'subtitle' => 'required|max:255',
             'article' => 'required',
-            'image' => 'image',
+            'image' => 'image|required|max:1000',
             'categories' => 'required|min:1|exists:categories,id'
         ]);
 
@@ -48,8 +50,16 @@ class PostController extends Controller
         $post->title = $request->input('title');
         $post->subtitle = $request->input('subtitle');
         $post->article = $request->input('article');
-        $post->image = $request->input('image');
-        $post->user_id = \Auth::user()->id;
+        $post->user_id = Auth::user()->id;
+
+        if ($request->hasFile('image'))
+        {
+            $file = $request->file('image');
+            $extension = $file->getClientOriginalExtension();
+            $filename = time().'.'.$extension;
+            $file->move('uploads/posts/', $filename);
+            $post->image = $filename;
+        }
 
         if ($post->save())
         {
@@ -85,15 +95,28 @@ class PostController extends Controller
             'title' => 'required|max:150',
             'subtitle' => 'required|max:255',
             'article' => 'required',
-            'image' => 'image',
+            'image' => 'image|max:1000',
             'categories' => 'required|min:1|exists:categories,id'
         ]);
 
         $post->title = $request->input('title');
         $post->subtitle = $request->input('subtitle');
         $post->article = $request->input('article');
-        $post->image = $request->input('image');
-        $post->user_id = \Auth::user()->id;
+        $post->user_id = Auth::user()->id;
+
+        if ($request->hasFile('image'))
+        {
+            $destination = 'uploads/posts/'.$post->image;
+            if (File::exists($destination))
+            {
+                File::delete(@$destination);
+            }
+            $file = $request->file('image');
+            $extension = $file->getClientOriginalExtension();
+            $filename = time().'.'.$extension;
+            $file->move('uploads/posts/', $filename);
+            $post->image = $filename;
+        }
 
         if ($post->save())
         {
@@ -109,6 +132,11 @@ class PostController extends Controller
      */
     public function destroy(Post $post)
     {
+        $destination = 'uploads/posts/'.$post->image;
+        if (File::exists($destination))
+        {
+            File::delete(@$destination);
+        }
         $post->categories()->detach();
         $post->delete();
 

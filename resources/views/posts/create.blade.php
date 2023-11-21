@@ -33,7 +33,7 @@
     @enderror
 
     <label for="image">Foto*</label>
-    <input type="image" id="image" name="image" alt="Upload photo">
+    <input type="file" id="image" name="image" alt="Upload photo">
     @error('image')
     <div>Error</div>
     @enderror
