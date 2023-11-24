@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Task;
 use Auth;
+use File;
 use Illuminate\Http\Request;
 
 class TaskController extends Controller
@@ -82,7 +83,7 @@ class TaskController extends Controller
      */
     public function edit(Task $task)
     {
-        //
+        return view('task.edit', compact('task'));
     }
 
     /**
@@ -90,7 +91,42 @@ class TaskController extends Controller
      */
     public function update(Request $request, Task $task)
     {
-        //
+        $request->validate([
+            'name' => 'required|max:150',
+            'description' => 'required',
+            'image' => 'image|max:1000',
+            'date' => 'required|date|after_or_equal:today',
+            'time' => 'required',
+            'location' => 'required',
+            'duration' => 'required',
+            'points' => 'required|numeric|in:50,100,150'
+        ]);
+
+        $task->name = $request->input('name');
+        $task->description = $request->input('description');
+        $task->date = $request->input('date');
+        $task->time = $request->input('time');
+        $task->location = $request->input('location');
+        $task->duration = $request->input('duration');
+        $task->points_earned = $request->input('points');
+        $task->user_id = Auth::user()->id;
+
+        if ($request->hasFile('image'))
+        {
+            $destination = 'uploads/tasks/'.$task->image;
+            if (File::exists($destination))
+            {
+                File::delete(@$destination);
+            }
+            $file = $request->file('image');
+            $extension = $file->getClientOriginalExtension();
+            $filename = time().'.'.$extension;
+            $file->move('uploads/tasks/', $filename);
+            $task->image = $filename;
+        }
+
+        $task->save();
+        return redirect(route('tasks.show', compact('task')));
     }
 
     /**
@@ -98,6 +134,13 @@ class TaskController extends Controller
      */
     public function destroy(Task $task)
     {
-        //
+        $destination = 'uploads/tasks/'.$task->image;
+        if (File::exists($destination))
+        {
+            File::delete(@$destination);
+        }
+        $task->delete();
+
+        return redirect(route('tasks.index'));
     }
 }
