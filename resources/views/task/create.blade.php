@@ -21,7 +21,7 @@
         <label for="image">Foto*</label>
         <input type="file" id="image" name="image" alt="Upload photo">
         @error('image')
-        <div>Error</div>
+        <div>{{$message}}</div>
         @enderror
 
         <label for="date">Datum*</label>

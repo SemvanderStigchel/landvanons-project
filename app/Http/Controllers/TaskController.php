@@ -12,6 +12,7 @@ class TaskController extends Controller
     public function __construct()
     {
         $this->middleware('auth')->except('index', 'show');
+        $this->middleware('owner-task')->only('edit', 'update', 'destroy');
     }
 
     /**
@@ -142,5 +143,22 @@ class TaskController extends Controller
         $task->delete();
 
         return redirect(route('tasks.index'));
+    }
+
+    public function enroll (Task $task)
+    {
+        $task->users()->attach(Auth::user()->id);
+        return redirect(route('tasks.enroll-success', compact('task')));
+    }
+
+    public function unsubscribe (Task $task)
+    {
+        $task->users()->detach(Auth::user()->id);
+        return redirect(route('tasks.index'));
+    }
+
+    public function enrollSuccess (Task $task)
+    {
+        return view('task.enrolled', compact('task'));
     }
 }

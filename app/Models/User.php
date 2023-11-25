@@ -53,6 +53,6 @@ class User extends Authenticatable
 
     public function enrollments (): \Illuminate\Database\Eloquent\Relations\BelongsToMany
     {
-        return $this->belongsToMany(Task::class);
+        return $this->belongsToMany(Task::class, 'enrollments');
     }
 }

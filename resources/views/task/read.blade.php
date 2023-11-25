@@ -9,5 +9,7 @@
         <img src="{{asset('uploads/tasks/'.$task->image)}}" alt="Uploaded image">
         <a href="{{route('tasks.show', $task)}}">Bekijk de taak</a>
     @endforeach
-    <a href="{{route('tasks.create')}}">Create taak</a>
+    @if(Auth::user()->role === 2)
+        <a href="{{route('tasks.create')}}">Create taak</a>
+    @endif
 @endsection
