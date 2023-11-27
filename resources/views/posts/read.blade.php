@@ -3,25 +3,59 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport"
-          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+          content="width=device-width, user-scalable=yes, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
+    @vite(['resources/css/app.css', 'resources/js/app.js', 'resources/css/news.css'])
 </head>
-<body>
-<h1>Het laatste Land van Ons nieuws!</h1>
-@foreach($posts as $post)
-    <h3>{{$post->title}}</h3>
-    <p>{{$post->subtitle}}</p>
-    <img src="{{asset('uploads/posts/'.$post->image)}}" alt="Uploaded image">
-    @foreach($post->categories as $category)
-    <span>{{$category->name}}</span>
+<body style="background-color: #F6F7FC">
+<main>
+<header class="flex content-between align-center row mg-3 mg-bottom-0 ">
+    <h1 class="text-large gray">Nieuws</h1>
+    <div class="flex content-center align-center">
+        <img class="mg-3" src="{{asset('images/search.svg')}}" alt="Search icon" style="width: 30px;">
+        <img src="{{asset('images/plantScanner.svg')}}" alt="plant scanner icon" style="width: 40px;">
+    </div>
+</header>
+<section class="flex row align-center content-center" style="width: 100vw">
+
+        <div class="flex row align-center scrollAnimation" style="overflow: scroll; width: 95vw; ">
+            @foreach($posts as $post)
+            <div class="article background-image border-1 column content-between flex mg-1 shadow"
+                 style="background-image: url('{{asset('uploads/posts/'.$post->image)}}')">
+                <div class="gradient-overlay"></div>
+                <div class="z-90 mg-2 mg-top-4">
+                @foreach($post->categories as $category)
+                    <a class="button button-slim bg-green-main mg-0 z-90"
+                       style="background-color: rgba(147, 208, 45, 0.50)">{{$category->name}}</a>
+                @endforeach
+                </div>
+                <div class="mg-2 mg-top-0 z-90" style="margin-bottom: 2rem">
+                    <h2 class="white mg-0" style="font-weight: normal">{{$post->title}}</h2>
+                    <p class="mg-0 light-gray-main z-90" style="font-size: 0.7rem">14/11/2023</p>
+                </div>
+                    <a class="mg-2 white show-more text-medium decoration-none z-90" style="width: unset !important;" href="{{route('posts.show', $post)}}">Lees Meer</a>
+            </div>
+            @endforeach
+        </div>
+
+</section>
+<section class="w-100 flex align-center column content-center mg-top-5 ">
+    @foreach($posts as $post)
+    <div class="newsItem border-1 bg-white flex align-center mg-2 scrollAnimation shadow ">
+        <img src="{{asset('uploads/posts/'.$post->image)}}" class="articleImg mg-3 border-1 object-cover">
+        <div class="flex content-between column articleText">
+            <p class="black mg-1">{{$post->title}}</p>
+            <p class="text-small gray mg-1">Land Van Ons</p>
+        </div>
+    </div>
     @endforeach
-    <a href="{{route('posts.show', $post)}}">Lees het artikel!</a>
-@endforeach
-@if(Auth::user()->role === 2)
-    <footer>
-        <a href="{{route('posts.create')}}">Create post pagina</a>
-    </footer>
-@endif
+</section>
+    @if(Auth::user()->role === 2)
+        <footer class="mg-3">
+            <a class="button button-outline border-purple purple-main decoration-none " style="font-weight: bold; margin-left: 0;" href="{{route('posts.create')}}">Create Post</a>
+        </footer>
+    @endif
+</main>
 </body>
 </html>

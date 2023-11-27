@@ -36,7 +36,6 @@
 
     }
 
-
     .navbar a.mypage-icon img {
         max-width: 50px;
         max-height: 50px;

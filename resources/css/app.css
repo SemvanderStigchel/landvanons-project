@@ -1,0 +1,401 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Source+Sans+3:wght@400;695&display=swap');
+
+:root {
+    --bg-green-main: #519238;
+    --bg-green-dark: #76bc21;
+    --bg-green-light: #94D02D;
+    --bg-purple-main: #CF8DCD;
+    --light-gray: #F2E3F3;
+    --gray: #545454;
+    --white: #fff;
+    --red: #ff4848;
+    --black: #000;
+    --yellow: #ffc884;
+    --orange: #f87728;
+    --global-font: 'Source Sans 3', sans-serif;
+
+}
+
+html {
+    font-family: var(--global-font);
+    scroll-behavior: smooth;
+}
+
+body {
+    margin: 0;
+}
+
+.ScrolledTo {
+    animation: fade-in 1s ease-in-out;
+}
+
+.button {
+    font-size: 1rem;
+    border: 0;
+    border-bottom: 3px #ffffff;
+    color: white;
+    padding: 0.4rem 0.7rem;
+    border-radius: 0.25rem;
+    margin: 0.25rem;
+    width: min-content;
+}
+.button-slim{
+    padding: 0.5rem 1.5rem;
+}
+.button-outline{
+    background-color: rgba(255, 255, 255, 0) !important;
+}
+.border-white{
+    border: 0.1rem solid var(--white);
+}
+.border-green{
+    border: 0.1rem solid var(--bg-green-main);
+}
+.border-purple{
+    border: 0.1rem solid var(--bg-purple-main);
+}
+.border-red{
+    border: 0.1rem solid var(--red);
+}
+.border-black{
+    border: 0.1rem solid black;
+}
+nav {
+    width: 100vw;
+    height: clamp(60px, 20vw, 90px);
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    background-color: white;
+}
+
+nav a {
+    height: clamp(30px, 50%, 80px);
+}
+
+.navIcon {
+    height: 100%;
+    transition: 50ms ease-in-out;
+    fill: green;
+}
+
+.navIcon:hover {
+    border-bottom: 3px solid var(--purple-main);
+}
+
+.green-main {
+    color: var(--bg-green-main);
+}
+.red{
+    color: var(--red);
+}
+.bg-green-main {
+    background-color: var(--bg-green-main);
+}
+
+.green-light {
+    color: var(--bg-green-light);
+}
+
+.bg-green-light {
+    background-color: var(--bg-green-light);
+}
+
+.purple-main {
+    color: var(--bg-purple-main);
+}
+
+.bg-purple-main {
+    background-color: var(--bg-purple-main);
+}
+.gray{
+    color: var(--gray);
+}
+.bg-green-main {
+    background-color: var(--bg-green-main);
+}
+
+.light-gray-main {
+    color: var(--light-gray);
+}
+
+.bg-light-gray-main {
+    background-color: var(--light-gray);
+}
+
+.white {
+    color: var(--white);
+}
+.black{
+    color: var(--black);
+}
+.bg-white {
+    background-color: var(--white);
+}
+
+/* FlexBox */
+
+.flex {
+    display: flex;
+}
+
+.block {
+    display: block;
+}
+
+.inline {
+    display: inline;
+}
+
+
+.row {
+    flex-direction: row;
+}
+
+.column {
+    flex-direction: column;
+}
+
+.row-reverse {
+    flex-direction: row-reverse;
+}
+
+.column-reverse {
+    flex-direction: column-reverse;
+}
+
+/* Justify Content aligns your child divs in the vertical axis. Note: If you change your flex-direction, this will change the other axis*/
+
+.content-center {
+    justify-content: center;
+}
+
+.content-start {
+    justify-content: flex-start;
+}
+
+.content-end {
+    justify-content: flex-end;
+}
+
+.content-between {
+    justify-content: space-between;
+}
+
+.content-around {
+    justify-content: space-around;
+}
+
+.content-evenly {
+    justify-content: space-evenly;
+}
+
+
+.align-center {
+    align-items: center;
+}
+
+.align-start {
+    align-items: flex-start;
+}
+
+.align-end {
+    align-items: flex-end;
+}
+
+
+.mg-0 {
+    margin: 0;
+}
+
+.mg-1 {
+    margin: 0.25rem;
+}
+
+.mg-2 {
+    margin: 0.5rem;
+}
+
+.mg-3 {
+    margin: 0.75rem;
+}
+
+.mg-4 {
+    margin: 1rem;
+}
+
+.mg-5 {
+    margin: 1.5rem;
+}
+
+.mg-6 {
+    margin: 2rem;
+}
+
+.mg-bottom-0{
+    margin-bottom: 0;
+}
+.mg-top-0{
+    margin-top: 0;
+}
+.mg-top-1{
+    margin-top: 0.25rem;
+}
+.mg-top-2{
+    margin-top: 0.5rem;
+}
+.mg-top-3{
+    margin-top: 0.75rem;
+}
+.mg-top-4{
+    margin-top: 1rem;
+}
+.mg-top-5{
+    margin-top: 2rem;
+}
+.mg-bottom-1{
+    margin-bottom: 0.25rem;
+}
+.mg-bottom-2{
+    margin-bottom: 0.5rem;
+}
+.mg-bottom-3{
+    margin-bottom: 0.75rem;
+}
+.mg-bottom-4{
+    margin-bottom: 1rem;
+}
+.mg-bottom-5{
+    margin-bottom: 2rem;
+}
+.pd-0 {
+    padding: 0;
+}
+
+.pd-1 {
+    padding: 0.25rem;
+}
+
+.pd-2 {
+    padding: 0.5rem;
+}
+
+.pd-3 {
+    padding: 0.75rem;
+}
+
+.pd-4 {
+    padding: 1rem;
+}
+
+.pd-5 {
+    padding: 1.5rem;
+}
+
+.pd-6 {
+    padding: 2rem;
+}
+
+.w-25 {
+    width: 25%;
+}
+
+.w-50 {
+    width: 50%;
+}
+
+.w-75 {
+    width: 75%;
+}
+
+.w-100 {
+    width: 100%;
+}
+.border-0{
+    border-radius: 0;
+}
+.border-1{
+    border-radius: 0.5rem;
+}
+.border-2{
+    border-radius: 0.7rem;
+}
+.border-3{
+    border-radius: 1rem;
+}
+.border-4{
+    border-radius: 1.25rem;
+}
+.border-5{
+    border-radius: 1.5rem;
+}
+.border-6{
+    border-radius: 1.75rem;
+}
+
+.background-image{
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+
+}
+.background-attach{
+    background-attachment: fixed;
+}
+.flex-wrap{
+    flex-wrap: wrap;
+}
+.flex-wrap-reverse{
+    flex-wrap: wrap-reverse;
+}
+.no-wrap{
+    flex-wrap: nowrap;
+}
+.border-bottom{
+    -webkit-box-shadow: inset 0 -6px 0 0 rgba(0,0,0,0.3);
+    box-shadow: inset 0 -6px 0 0 rgba(0,0,0,0.3);
+}
+.shadow{
+    -webkit-box-shadow: 5px 5px 5px 0 rgba(0,0,0,0.18);
+    box-shadow: 5px 5px 5px 0 rgba(0,0,0,0.18);
+}
+.text-small{
+    font-size: 0.75rem;
+}
+.text-medium{
+    font-size: 1rem;
+}
+.text-large{
+    font-size: 1.5rem;
+}
+.decoration-none{
+    text-decoration: none;
+}
+.z-90{
+    z-index: 90;
+}
+.object-cover{
+    object-fit: cover;
+}
+@keyframes fade-in {
+    from {
+        transform: translateX(-3rem);
+        opacity: 0;
+    }
+    to {
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
+
+.scrollAnimation {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.8s, transform 0.8s;
+}
+
+.scrollAnimation.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
