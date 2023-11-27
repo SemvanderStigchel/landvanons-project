@@ -9,24 +9,36 @@
     <p>Adres: {{$task->location}}</p>
     <p>Lengte: {{$task->duration}}</p>
     <p>Punten te verdienen: {{$task->points_earned}} punten</p>
-    @if($task->users->contains(Auth::user()->id))
-        <form action="{{route('tasks.unsub', $task)}}" method="POST">
-            @csrf
-            <button type="submit">Uitschrijven</button>
-        </form>
-    @else
+    <p>Aantal mensen ingeschreven voor deze taak: @if($task->users->count() === 1)
+            {{$task->users->count()}} persoon
+        @else
+            {{$task->users->count()}} personen
+        @endif </p>
+    @guest
         <form action="{{route('tasks.enroll', $task)}}" method="POST">
             @csrf
             <button type="submit">Inschrijven</button>
         </form>
-    @endif
+    @else
+        @if($task->users->contains(Auth::user()->id))
+            <form action="{{route('tasks.unsub', $task)}}" method="POST">
+                @csrf
+                <button type="submit">Uitschrijven</button>
+            </form>
+        @else
+            <form action="{{route('tasks.enroll', $task)}}" method="POST">
+                @csrf
+                <button type="submit">Inschrijven</button>
+            </form>
+        @endif
 
-    @if(Auth::user()->role === 2)
-        <a href="{{route('tasks.edit', $task)}}">Edit deze post</a>
-        <form action="{{route('tasks.destroy', $task)}}" method="POST">
-            @csrf
-            @method('DELETE')
-            <button type="submit">Verwijder deze post</button>
-        </form>
-    @endif
+        @if(Auth::user()->role === 2)
+            <a href="{{route('tasks.edit', $task)}}">Edit deze post</a>
+            <form action="{{route('tasks.destroy', $task)}}" method="POST">
+                @csrf
+                @method('DELETE')
+                <button type="submit">Verwijder deze post</button>
+            </form>
+        @endif
+    @endguest
 @endsection
