@@ -70,9 +70,7 @@ nav {
     background-color: white;
 }
 
-nav a {
-    height: clamp(30px, 50%, 80px);
-}
+
 
 .navIcon {
     height: 100%;
