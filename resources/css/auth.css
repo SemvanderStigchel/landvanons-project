@@ -1,0 +1,63 @@
+.headerImg{
+    width: clamp(50px, 60vw, 300px);
+    object-fit: cover;
+    filter: drop-shadow(4px 4px 2px #b4b4b4);
+}
+.border-auth{
+    border: 1px solid #000;
+}
+.button-50{
+    width: calc(60vw - 30px);
+}
+.button-fill{
+    width: calc(60vw + 12px);
+}
+#email,#password,#password-confirm,#name,#phone{
+    background-size: 20px;
+    padding-left:30px;
+}
+#name{
+    background: url("../images/person3.png") no-repeat scroll 6px;
+}
+#phone{
+    background: url("../images/phone.png") no-repeat scroll 6px;
+}
+#email{
+    background: url("../images/email.png") no-repeat scroll 6px;
+}
+#password,#password-confirm{
+    background: url("../images/lock3.png") no-repeat scroll 6px;
+}
+
+.fadeCentre{
+    animation-name: fadeUp;
+    animation-duration: 2000ms;
+    animation-fill-mode: forwards;
+}
+.fadeOut{
+    animation-name: fadeOut;
+    animation-duration: 1000ms;
+    animation-fill-mode: forwards;
+}
+
+@keyframes fadeUp {
+    0%{
+        opacity: 1;
+    }
+    90%{
+        opacity: 1;
+        transform: translateY(100%);
+    }
+    100%{
+        opacity: 0;
+        transform: translateY(100%);
+}
+}
+@keyframes fadeOut {
+    0%{
+        opacity: 1;
+    }
+    100%{
+        opacity: 0;
+    }
+}

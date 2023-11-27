@@ -56,6 +56,17 @@
             <a class="button button-outline border-purple purple-main decoration-none " style="font-weight: bold; margin-left: 0;" href="{{route('posts.create')}}">Create Post</a>
         </footer>
     @endif
+    <div>
+        <a class="dropdown-item" href="{{ route('logout') }}"
+           onclick="event.preventDefault();
+                                                     document.getElementById('logout-form').submit();">
+            {{ __('Logout') }}
+        </a>
+
+        <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+            @csrf
+        </form>
+    </div>
 </main>
 </body>
 </html>
