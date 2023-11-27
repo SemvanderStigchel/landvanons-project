@@ -50,6 +50,7 @@
     <h2 class="gray mg-bottom-0 scrollAnimation">{{$post->subtitle}}</h2>
     <p class="gray mg-top-0 scrollAnimation">{{$post->article}}</p>
 </section>
+@include('partials.navbar')
 </body>
 </html>
 

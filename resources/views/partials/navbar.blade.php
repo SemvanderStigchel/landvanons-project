@@ -47,7 +47,7 @@
 
 
 <nav class="navbar">
-    <a href="#"><img src="{{ asset('images/homeicon.png') }}" alt="Home"></a>
+    <a href="{{route('home')}}"><img src="{{ asset('images/homeicon.png') }}" alt="Home"></a>
     <a href="#"><img src="{{ asset('images/messageicon.png') }}" alt="Icon 2"></a>
     <a href="#" class="mypage-icon">
         <img src="{{ asset('images/mypageicon.png') }}" alt="Middle Icon">
