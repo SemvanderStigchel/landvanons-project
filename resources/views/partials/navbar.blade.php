@@ -31,14 +31,14 @@
 
 
     .navbar a img {
-        max-width: 20px;
-        max-height: 20px;
+        max-width: 35px;
+        max-height: 35px;
 
     }
 
     .navbar a.mypage-icon img {
-        max-width: 50px;
-        max-height: 50px;
+        max-width: 35px;
+        max-height: 35px;
     }
 
 </style>

@@ -59,6 +59,7 @@
             </footer>
         @endif
     @endguest
+    @include('partials.navbar')
     <div>
         <a class="dropdown-item" href="{{ route('logout') }}"
            onclick="event.preventDefault();
