@@ -33,16 +33,19 @@
            style="background-color: rgba(147, 208, 45, 0.50); width: fit-content">{{$category->name}}</a>
     @endforeach
 </div>
-@if(Auth::user()->role === 2)
-    <div style="width: 100px;" class="flex align-center content-between mg-5 mg-top-1 mg-bottom-0">
-        <a class="button button-outline border-green green-main decoration-none" style="padding: 0.27rem 0.7rem; margin-left: 0;" href="{{route('posts.edit', $post)}}">Aanpassen</a>
-        <form action="{{route('posts.destroy', $post)}}" method="POST">
-            @csrf
-            @method('DELETE')
-            <button class="button button-outline border-red decoration-none red" type="submit">Verwijderen</button>
-        </form>
-    </div>
-@endif
+@guest
+@else
+    @if(Auth::user()->role === 2)
+        <div style="width: 100px;" class="flex align-center content-between mg-5 mg-top-1 mg-bottom-0">
+            <a class="button button-outline border-green green-main decoration-none" style="padding: 0.27rem 0.7rem; margin-left: 0;" href="{{route('posts.edit', $post)}}">Aanpassen</a>
+            <form action="{{route('posts.destroy', $post)}}" method="POST">
+                @csrf
+                @method('DELETE')
+                <button class="button button-outline border-red decoration-none red" type="submit">Verwijderen</button>
+            </form>
+        </div>
+    @endif
+@endguest
 <section class="mg-5">
     <h2 class="gray mg-bottom-0 scrollAnimation">{{$post->subtitle}}</h2>
     <p class="gray mg-top-0 scrollAnimation">{{$post->article}}</p>

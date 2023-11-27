@@ -43,7 +43,7 @@
 <section class="w-100 flex align-center column content-center mg-top-5 ">
     @foreach($posts as $post)
     <div class="newsItem border-1 bg-white flex align-center mg-2 scrollAnimation shadow ">
-        <img src="{{asset('uploads/posts/'.$post->image)}}" class="articleImg mg-3 border-1 object-cover">
+        <img src="{{asset('uploads/posts/'.$post->image)}}" class="articleImg mg-3 border-1 object-cover" alt="uploaded image">
         <div class="flex content-between column articleText">
             <p class="black mg-1">{{$post->title}}</p>
             <p class="text-small gray mg-1">Land Van Ons</p>
@@ -51,11 +51,14 @@
     </div>
     @endforeach
 </section>
-    @if(Auth::user()->role === 2)
-        <footer class="mg-3">
-            <a class="button button-outline border-purple purple-main decoration-none " style="font-weight: bold; margin-left: 0;" href="{{route('posts.create')}}">Create Post</a>
-        </footer>
-    @endif
+    @guest
+    @else
+        @if(Auth::user()->role === 2)
+            <footer class="mg-3">
+                <a class="button button-outline border-purple purple-main decoration-none " style="font-weight: bold; margin-left: 0;" href="{{route('posts.create')}}">Create Post</a>
+            </footer>
+        @endif
+    @endguest
     <div>
         <a class="dropdown-item" href="{{ route('logout') }}"
            onclick="event.preventDefault();
