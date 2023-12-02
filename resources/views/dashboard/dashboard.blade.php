@@ -13,7 +13,7 @@
 
     <!-- Banner -->
     <div class="banner">
-        <a href="" class="back-button">Terug</a>
+        <a href="{{route('posts.index')}}" class="back-button">Terug</a>
         <div class="title">Overzicht</div>
     </div>
 
@@ -113,7 +113,7 @@
                     detailsText = "Dankzij jou minder C02 uitstoot!";
                     break;
                 case 3:
-                    detailsText = "Je punten totaal is 200 punten. je kunt deze gebruiken om items te kopen in de shop";
+                    detailsText = "Je punten totaal is {{$user->points}} punten. je kunt deze gebruiken om items te kopen in de shop";
                     break;
 
             }
