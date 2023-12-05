@@ -179,3 +179,7 @@ body {
     margin: 0 10px; /* Adjust the margin between small images as needed */
     cursor: pointer;
 }
+
+#not-logged-in {
+    background: #CF8DCD;
+}
