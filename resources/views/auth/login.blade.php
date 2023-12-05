@@ -54,7 +54,7 @@ padding-left:30px;"
                                     <button type="submit"
                                             class="scrollAnimation button bg-purple-main white button-fill pd-3 border-3"
                                             value="Inloggen">
-                                        {{ __('inloggen') }}
+                                        {{ __('Inloggen') }}
                                     </button>
                                 </div>
                             </div>
