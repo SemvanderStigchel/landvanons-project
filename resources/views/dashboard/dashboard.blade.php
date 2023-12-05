@@ -39,7 +39,7 @@
             </div>
             <div class="image-tile-item">
                 <img src="{{ asset('images/tile3.svg') }}" alt="Image 3">
-                <div class="image-text">@if($user->trees === null) N/A kg Co2 opgenomen per jaar @else {{$user->trees * 25}} kg Co2 opgenomen per jaar @endif</div>
+                <div class="image-text">@if($user->trees === null) N/A kg Co2 @else {{$user->trees * 25}} kg Co2 @endif</div>
             </div>
             <div class="image-tile-item">
                 <img src="{{ asset('images/tile4.svg') }}" alt="Image 4">
