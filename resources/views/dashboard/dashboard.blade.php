@@ -27,22 +27,22 @@
     <!-- ... (your existing HTML) -->
 
     {{-- Rectangle with tiles --}}
-    <div class="tile-rectangle">
+    <div class="tile-rectangle scrollAnimation">
         <div class="image-tile">
-            <div class="image-tile-item">
-                <img src="{{ asset('images/tile1.svg') }}" alt="Image 1">
+            <div class="image-tile-item scrollAnimation">
+                <img src="{{ asset('images/tile1.svg') }}" alt="Cartoon boom">
                 <div class="image-text">@if($user->trees === null) N/A Bomen @else {{$user->trees}} Bomen @endif</div>
             </div>
-            <div class="image-tile-item">
-                <img src="{{ asset('images/tile2.svg') }}" alt="Image 2">
+            <div class="image-tile-item scrollAnimation">
+                <img src="{{ asset('images/tile2.svg') }}" alt="Cartoon koe">
                 <div class="image-text">@if($user->animals === null) N/A Dieren @else {{$user->animals}} Dieren @endif</div>
             </div>
-            <div class="image-tile-item">
-                <img src="{{ asset('images/tile3.svg') }}" alt="Image 3">
+            <div class="image-tile-item scrollAnimation">
+                <img src="{{ asset('images/tile3.svg') }}" alt="Wolkje Co2">
                 <div class="image-text">@if($user->trees === null) N/A kg Co2 @else {{$user->trees * 25}} kg Co2 @endif</div>
             </div>
-            <div class="image-tile-item">
-                <img src="{{ asset('images/tile4.svg') }}" alt="Image 4">
+            <div class="image-tile-item scrollAnimation">
+                <img src="{{ asset('images/tile4.svg') }}" alt="Medaille">
                 <div class="image-text">{{$user->points}} Punten</div>
             </div>
         </div>
