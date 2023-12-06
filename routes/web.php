@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\PostController;
+use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -20,3 +21,5 @@ Auth::routes();
 Route::get('/', [App\Http\Controllers\PostController::class, 'index'])->name('home');
 
 Route::resource('posts', PostController::class);
+
+Route::get('/profile', [ProfileController::class, 'profile'])->name('profile');
