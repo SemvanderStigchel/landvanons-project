@@ -18,9 +18,6 @@
     </div>
 
 
-
-
-
     <!-- reusable navbar -->
     @include('partials.navbar')
 
@@ -31,15 +28,27 @@
         <div class="image-tile">
             <div class="image-tile-item scrollAnimation">
                 <img src="{{ asset('images/tile1.svg') }}" alt="Cartoon boom">
-                <div class="image-text">@if($user->trees === null) N/A Bomen @else {{$user->trees}} Bomen @endif</div>
+                <div class="image-text">@if($user->trees === null)
+                        N/A Bomen
+                    @else
+                        {{$user->trees}} Bomen
+                    @endif</div>
             </div>
             <div class="image-tile-item scrollAnimation">
                 <img src="{{ asset('images/tile2.svg') }}" alt="Cartoon koe">
-                <div class="image-text">@if($user->animals === null) N/A Dieren @else {{$user->animals}} Dieren @endif</div>
+                <div class="image-text">@if($user->animals === null)
+                        N/A Dieren
+                    @else
+                        {{$user->animals}} Dieren
+                    @endif</div>
             </div>
             <div class="image-tile-item scrollAnimation">
                 <img src="{{ asset('images/tile3.svg') }}" alt="Wolkje Co2">
-                <div class="image-text">@if($user->trees === null) N/A kg Co2 @else {{$user->trees * 25}} kg Co2 @endif</div>
+                <div class="image-text">@if($user->trees === null)
+                        N/A kg Co2
+                    @else
+                        {{$user->trees * 25}} kg Co2
+                    @endif</div>
             </div>
             <div class="image-tile-item scrollAnimation">
                 <img src="{{ asset('images/tile4.svg') }}" alt="Medaille">
@@ -104,16 +113,16 @@
             var detailsText = "";
             switch (tileIndex) {
                 case 0:
-                    detailsText = "Je draagt nu bij aan het planten van 200 bomen.";
+                    detailsText = "Je draagt nu bij aan het planten van @if($user->trees === null) N/A bomen @else {{$user->trees}} bomen @endif.";
                     break;
                 case 1:
-                    detailsText = "Meer dan 20 diersoorten bevinden zich op jou grond";
+                    detailsText = "Er bevinden zich @if($user->animals === null) N/A diersoorten @else {{$user->animals}} diersoorten @endif op jou grond.";
                     break;
                 case 2:
-                    detailsText = "Dankzij jou minder C02 uitstoot!";
+                    detailsText = "De bomen op het stuk land waar jij aan mee betaald nemen @if($user->trees === null) N/A kg Co2 @else {{$user->trees * 25}} kg Co2 @endif per jaar op!";
                     break;
                 case 3:
-                    detailsText = "Je punten totaal is {{$user->points}} punten. je kunt deze gebruiken om items te kopen in de shop";
+                    detailsText = "Je punten totaal is {{$user->points}} punten. Je kunt deze gebruiken om decoraties te kopen voor jouw virtuele stukje land!";
                     break;
 
             }

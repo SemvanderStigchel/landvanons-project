@@ -51,7 +51,7 @@
     </div>
 
     <div id="not-logged-in" class="mg-4 pd-2 border-2 scrollAnimation">
-        <h4 class="white mg-0">Je moet ingelogd zijn om jouw dashboard te kunnen zien!</h4>
+        <h4 class="white mg-0">Je moet ingelogd zijn om jouw gegevens te kunnen zien!</h4>
     </div>
     @include('partials.navbar')
 </main>
