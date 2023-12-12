@@ -9,7 +9,11 @@ class ProfileController extends Controller
 {
     public function show()
     {
-        $user = Auth::user();
-        return view('profile', compact('user'));
+        if (Auth::user()) {
+            $user = Auth::user();
+            return view('profile.profile', compact('user'));
+        } else {
+            return view('home');
+        }
     }
 }
