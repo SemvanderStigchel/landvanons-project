@@ -24,3 +24,5 @@ Route::get('/', [App\Http\Controllers\PostController::class, 'index'])->name('ho
 Route::resource('posts', PostController::class);
 
 Route::get('/profile', [ProfileController::class, 'show'])->name('profile');
+
+Route::put('/profile', [ProfileController::class, 'updateCredentials'])->name('profile.update-credentials');
