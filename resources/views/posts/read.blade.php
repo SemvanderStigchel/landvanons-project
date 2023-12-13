@@ -13,8 +13,7 @@
 <header class="flex content-between align-center row mg-3 mg-bottom-0 ">
     <h1 class="text-large gray">Nieuws</h1>
     <div class="flex content-center align-center">
-        <img class="mg-3" src="{{asset('images/search.svg')}}" alt="Search icon" style="width: 30px;">
-        <img src="{{asset('images/plantScanner.svg')}}" alt="plant scanner icon" style="width: 40px;">
+        <a class="button button-outline border-purple purple-main decoration-none scrollAnimation" style="font-weight: bold; margin-left: 0;" href="{{route('posts.create')}}">Inloggen</a>
     </div>
 </header>
 <section class="flex row align-center content-center" style="width: 100vw">
@@ -32,7 +31,7 @@
                 </div>
                 <div class="mg-2 mg-top-0 z-90" style="margin-bottom: 2rem">
                     <h2 class="white mg-0" style="font-weight: normal">{{$post->title}}</h2>
-                    <p class="mg-0 light-gray-main z-90" style="font-size: 0.7rem">14/11/2023</p>
+                    <p class="mg-0 light-gray-main z-90" style="font-size: 0.7rem">{{$post->created_at}}</p>
                 </div>
                     <a class="mg-2 white show-more text-medium decoration-none z-90" style="width: unset !important;" href="{{route('posts.show', $post)}}">Lees Meer</a>
             </div>
@@ -40,7 +39,8 @@
         </div>
 
 </section>
-<section class="w-100 flex align-center column content-center mg-top-5 ">
+<section class="w-100 flex align-center column content-center mg-top-5" style="margin-bottom: 40px;">
+    <h3 class="mg-3 gray scrollAnimation mg-bottom-1" style="width: 95vw">Vrijwillegers taken</h3>
     @foreach($posts as $post)
     <div class="newsItem border-1 bg-white flex align-center mg-2 scrollAnimation shadow ">
         <img src="{{asset('uploads/posts/'.$post->image)}}" class="articleImg mg-3 border-1 object-cover" alt="uploaded image">
@@ -54,8 +54,8 @@
     @guest
     @else
         @if(Auth::user()->role === 2)
-            <footer class="mg-3">
-                <a class="button button-outline border-purple purple-main decoration-none " style="font-weight: bold; margin-left: 0;" href="{{route('posts.create')}}">Create Post</a>
+            <footer class="mg-3" style="margin-bottom: 100px">
+                <a class="button button-outline border-purple purple-main decoration-none scrollAnimation" style="font-weight: bold; margin-left: 0;" href="{{route('posts.create')}}">Create Post</a>
             </footer>
         @endif
     @endguest

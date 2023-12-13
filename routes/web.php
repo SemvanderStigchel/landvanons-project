@@ -18,5 +18,8 @@ use Illuminate\Support\Facades\Route;
 Auth::routes();
 
 Route::get('/', [App\Http\Controllers\PostController::class, 'index'])->name('home');
+Route::get('/decorations', [App\Http\Controllers\DecorationsController::class, 'index'])->name('decorations');
 
 Route::resource('posts', PostController::class);
+
+Route::post('purchaseItem', [App\Http\Controllers\DecorationsController::class, 'purchase'])->name('item.purchase');

@@ -8,7 +8,7 @@
 .article:nth-child(1){
     margin-left: 0;
 }
-.article:nth-last-child{
+.article:nth-last-child(-n+1){
     margin-right: 0;
 }
 .newsItem {
