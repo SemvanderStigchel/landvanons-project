@@ -58,11 +58,10 @@ class TaskController extends Controller
         $task->points_earned = $request->input('points');
         $task->user_id = Auth::user()->id;
 
-        if ($request->hasFile('image'))
-        {
+        if ($request->hasFile('image')) {
             $file = $request->file('image');
             $extension = $file->getClientOriginalExtension();
-            $filename = time().'.'.$extension;
+            $filename = time() . '.' . $extension;
             $file->move('uploads/tasks/', $filename);
             $task->image = $filename;
         }
@@ -112,16 +111,14 @@ class TaskController extends Controller
         $task->points_earned = $request->input('points');
         $task->user_id = Auth::user()->id;
 
-        if ($request->hasFile('image'))
-        {
-            $destination = 'uploads/tasks/'.$task->image;
-            if (File::exists($destination))
-            {
+        if ($request->hasFile('image')) {
+            $destination = 'uploads/tasks/' . $task->image;
+            if (File::exists($destination)) {
                 File::delete(@$destination);
             }
             $file = $request->file('image');
             $extension = $file->getClientOriginalExtension();
-            $filename = time().'.'.$extension;
+            $filename = time() . '.' . $extension;
             $file->move('uploads/tasks/', $filename);
             $task->image = $filename;
         }
@@ -135,9 +132,8 @@ class TaskController extends Controller
      */
     public function destroy(Task $task)
     {
-        $destination = 'uploads/tasks/'.$task->image;
-        if (File::exists($destination))
-        {
+        $destination = 'uploads/tasks/' . $task->image;
+        if (File::exists($destination)) {
             File::delete(@$destination);
         }
         $task->delete();
@@ -145,19 +141,19 @@ class TaskController extends Controller
         return redirect(route('tasks.index'));
     }
 
-    public function enroll (Task $task)
+    public function enroll(Task $task)
     {
         $task->users()->attach(Auth::user()->id);
         return redirect(route('tasks.enroll-success', compact('task')));
     }
 
-    public function unsubscribe (Task $task)
+    public function unsubscribe(Task $task)
     {
         $task->users()->detach(Auth::user()->id);
         return redirect(route('tasks.index'));
     }
 
-    public function enrollSuccess (Task $task)
+    public function enrollSuccess(Task $task)
     {
         return view('task.enrolled', compact('task'));
     }
