@@ -15,6 +15,10 @@
     width: clamp(200px, 95vw, 500px);
     height: clamp(60px, 15vh, 200px);
 }
+.newsItem1 {
+    width: clamp(200px, 90vw, 500px);
+    height: clamp(60px, 15vh, 200px);
+}
 
 .articleImg {
     width: clamp(40px, 90%, 80px);
