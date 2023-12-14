@@ -5,39 +5,40 @@
     <meta name="viewport"
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    @vite(['resources/css/app.css', 'resources/js/app.js', 'resources/css/news.css'])
     <title>Profile</title>
 </head>
 <body>
-<h1>Profiel pagina</h1>
-
-@extends('layouts.app')
-
-@section('content')
-    <div class="container">
-        <h1>Jouw Profiel</h1>
-        <form action="{{route('profile.update-credentials')}}" method="POST">
+<header class="pd-4" style="width: 100vw; height: 25vh; background-color: #72B94F; padding-top: 2rem;">
+    <h1 class="mg-0 mg-top-0 white">Profiel</h1>
+</header>
+    <div class="container bg-white flex column align-center" style="width: 100vw;">
+        <form action="{{route('profile.update-credentials')}}" method="POST" class="flex column align-center bg-white pd-3 border-2" style="width: 85vw; transform: translateY(-30%)">
             @csrf
             @method('PUT')
-
-            <label for="name">Naam:</label>
-            <input type="text" id="name" name="name" value="{{$user->name}}">
+            <div class="flex column">
+            <label for="name" class="gray mg-1" style="font-weight: bold">Naam:</label>
+            <input type="text" class="button button-outline gray border-black" id="name" name="name" value="{{$user->name}}">
             @error('name')
             <div>{{$message}}</div>
             @enderror
-
-            <label for="email">Email:</label>
-            <input type="email" id="email" name="email" value="{{$user->email}}">
+            </div>
+            <div class="flex column">
+            <label for="email" class="gray mg-1" style="font-weight: bold" >Email:</label>
+            <input type="email" class="button button-outline gray border-black" id="email" name="email" value="{{$user->email}}">
             @error('email')
             <div>{{$message}}</div>
             @enderror
-
-            <label for="phone">Telefoonnummer:</label>
-            <input type="text" id="phone" name="phone" value="{{$user->phone}}">
+            </div>
+            <div class="flex column">
+            <label for="phone" class="gray mg-1" style="font-weight: bold">Telefoonnummer:</label>
+            <input type="text" class="button button-outline gray border-black button-50" id="phone" name="phone" value="{{$user->phone}}">
             @error('phone')
             <div>{{$message}}</div>
             @enderror
+                <input type="submit" class="mg-top-4 pd-3 button white bg-purple-main button-fill" value="Update jouw gegevens" style="width: 98%;">
+            </div>
 
-            <input type="submit" value="Update jouw gegevens">
         </form>
 
         <h2>Ingeschreven vrijwilligerstaken</h2>
@@ -50,7 +51,6 @@
         @endforeach
 
     </div>
-@endsection
-
+@include('partials.navbar')
 </body>
 </html>
