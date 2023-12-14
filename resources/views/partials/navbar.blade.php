@@ -48,12 +48,12 @@
 
 <nav class="navbar">
     <a href="{{route('home')}}"><img src="{{ asset('images/homeicon.png') }}" alt="Home"></a>
-    <a href="#"><img src="{{ asset('images/􀋱vrijwilligerstakenIcon.svg') }}" alt="Vrijwilligerstaken"></a>
+    <a href="{{route('tasks.index')}}"><img src="{{ asset('images/􀋱vrijwilligerstakenIcon.svg') }}" alt="Vrijwilligerstaken"></a>
     <a href="{{route('decorations')}}" class="mypage-icon">
-        <img src="{{ asset('images/mypageicon.png') }}" alt="Middle Icon">
+        <img src="{{ asset('images/mypageicon.png') }}" alt="Land pagina">
     </a>
     <a href="{{route('dashboard')}}"><img src="{{ asset('images/dashboardIcon.svg') }}" alt="Dashboard"></a>
-    <a href="#"><img src="{{ asset('images/profileicon.png') }}" alt="Icon 4"></a>
+    <a href="{{route('profile')}}"><img src="{{ asset('images/profileicon.png') }}" alt="Profiel page"></a>
 </nav>
 
 
