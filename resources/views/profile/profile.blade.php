@@ -8,6 +8,7 @@
     @vite(['resources/css/app.css', 'resources/js/app.js', 'resources/css/news.css'])
     <title>Profile</title>
 </head>
+
 <body style="background-color: #F6F7FC">
 <header class="pd-4" style="width: 100vw; height: 25vh; background-color: #72B94F; padding-top: 2rem;">
     <h1 class="mg-0 mg-top-0 white">Profiel</h1>
