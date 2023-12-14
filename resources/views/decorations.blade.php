@@ -21,11 +21,13 @@
             z-index: 2;
             position: relative;
         }
-#container{
-    animation: float;
-    animation-duration: 5s;
-    animation-iteration-count: infinite;
-}
+
+        #container {
+            animation: float;
+            animation-duration: 5s;
+            animation-iteration-count: infinite;
+        }
+
         .draggable-button {
             position: absolute;
             cursor: pointer;
@@ -53,13 +55,13 @@
         }
 
         @keyframes float {
-            0%{
+            0% {
                 transform: translateY(5px);
             }
-            50%{
-                transform:  translateY(0px);
+            50% {
+                transform: translateY(0px);
             }
-            100%{
+            100% {
                 transform: translateY(5px);
             }
         }
@@ -72,13 +74,16 @@
         let buttons = [];
         let pageLoaded = true; // Flag to check if the page is just loaded
         let sellMenu;
+        let activeButton;
 
         function getButtons() {
             sellMenu = document.getElementById("sellMenu");
             sellMenu.style.display = "none";
 
+
+
             let parent = document.getElementById("container")
-            for (let i = 0; i < 9; i++) {
+            for (let i = 0; i < 20; i++) {
 
                 if (localStorage.getItem('button' + i) !== null) {
                     let newItem = document.createElement('img');
@@ -110,6 +115,9 @@
             pageLoaded = false;
         }
 
+        function closeButtonMenu(){
+            sellMenu.style.display = "none";
+        }
         function makeDraggable(element) {
             let isDragging = false;
             let offsetX, offsetY;
@@ -119,7 +127,6 @@
                     // Skip saving position during the initial load
                     return;
                 }
-
                 isDragging = true;
                 buttonIsPressed = true;
                 buttonTimeOut = setTimeout(openButtonMenu, 1000);
@@ -139,13 +146,18 @@
                 document.addEventListener('touchend', stopDrag);
             }
 
-            function openButtonMenu(button) {
-
+            function openButtonMenu() {
+                sellMenu.style.display = "block";
+                sellMenu.style.zIndex = "99";
+                console.log(activeButton.offsetLeft);
+                sellMenu.style.position = "absolute";
+                sellMenu.style.left = (activeButton.offsetLeft) + "px";
+                sellMenu.style.top = (activeButton.offsetTop + activeButton.offsetHeight) + "px";
             }
 
             function dragButton(event) {
                 event.preventDefault();
-
+                activeButton = element;
                 if (isDragging) {
                     const containerRect = document.getElementById('container').getBoundingClientRect();
                     const maxX = containerRect.width - element.offsetWidth;
@@ -166,6 +178,8 @@
 
                     element.style.left = x + '%';
                     element.style.top = y + '%';
+                    sellMenu.style.left = (activeButton.offsetLeft) + "px";
+                    sellMenu.style.top = (element.offsetTop + element.offsetHeight) + "px";
                 }
             }
 
@@ -173,7 +187,6 @@
                 isDragging = false;
                 buttonIsPressed = false;
                 clearTimeout(buttonTimeOut);
-
                 document.removeEventListener('mousemove', dragButton);
                 document.removeEventListener('mouseup', stopDrag);
                 document.removeEventListener('touchmove', dragButton);
@@ -213,6 +226,12 @@
         buttons.forEach(button => {
             makeDraggable(button);
         });
+
+        function sellItem() {
+            localStorage.removeItem(activeButton.id);
+            activeButton.remove();
+            sellMenu.style.display = "none";
+        }
 
         let resizeObserver;
 
@@ -261,10 +280,9 @@
     <?php } ?>
 
     <div id="" class="border-4 " style="transform: translateY(-25%); background-color: #F6F7FC">
-        <div id="container" class="scrollAnimation">
+        <div id="container" onclick="closeButtonMenu()" class="scrollAnimation">
             <div id="sellMenu">
-                <button>Sell</button>
-                <button>Move</button>
+                <button class="button bg-green-main white " onclick="sellItem()">Verwijder</button>
             </div>
             <img id="background" class="" src="../images/Layer 1.svg">
         </div>
