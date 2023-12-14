@@ -104,8 +104,8 @@
                                     </button>
                                 </div>
                                 <div style="border-top: 1px solid black" class="scrollAnimation mg-top-1 mg-bottom-4">
-                                    <a
-                                        class="button bg-green-light white button-50-a pd-3 mg-top-2 border-3 shadow" style="display: block; align-self: center; text-align: center">
+                                    <a href="{{route('login')}}"
+                                        class="button bg-green-light white button-50-a pd-3 mg-top-2 border-3 shadow decoration-none" style="display: block; align-self: center; text-align: center">
                                         Inloggen
                                     </a>
                                 </div>
