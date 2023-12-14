@@ -24,6 +24,7 @@
         padding: 10px;
         flex: 1;
 
+
     }
 
 
@@ -46,11 +47,13 @@
 
 
 <nav class="navbar">
-    <a href="#"><img src="{{ asset('images/homeicon.png') }}" alt="Home"></a>
-    <a href="#"><img src="{{ asset('images/messageicon.png') }}" alt="Icon 2"></a>
-    <a href="#" class="mypage-icon"><img src="{{ asset('images/mypageicon.png') }}" alt="Middle Icon"></a>
-    <a href="#"><img src="{{ asset('images/profileicon.png') }}" alt="Icon 3"></a>
-    <a href="#"><img src="{{ asset('images/settingsicon.png') }}" alt="Icon 4"></a>
+    <a href="{{route('home')}}"><img src="{{ asset('images/homeicon.png') }}" alt="Home"></a>
+    <a href="#"><img src="{{ asset('images/􀋱vrijwilligerstakenIcon.svg') }}" alt="Vrijwilligerstaken"></a>
+    <a href="{{route('decorations')}}" class="mypage-icon">
+        <img src="{{ asset('images/mypageicon.png') }}" alt="Middle Icon">
+    </a>
+    <a href="{{route('dashboard')}}"><img src="{{ asset('images/dashboardIcon.svg') }}" alt="Dashboard"></a>
+    <a href="#"><img src="{{ asset('images/profileicon.png') }}" alt="Icon 4"></a>
 </nav>
 
 

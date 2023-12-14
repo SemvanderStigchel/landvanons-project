@@ -1,6 +1,10 @@
 <?php
 
 use App\Http\Controllers\TaskController;
+use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\PostController;
+use App\Http\Controllers\ProfileController;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -17,7 +21,18 @@ use Illuminate\Support\Facades\Route;
 
 Auth::routes();
 
-Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::get('/', [App\Http\Controllers\PostController::class, 'index'])->name('home');
+Route::get('/decorations', [App\Http\Controllers\DecorationsController::class, 'index'])->name('decorations');
+
+Route::resource('posts', PostController::class);
+
+Route::post('purchaseItem', [App\Http\Controllers\DecorationsController::class, 'purchase'])->name('item.purchase');
+
+Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
+
+Route::get('/profile', [ProfileController::class, 'show'])->name('profile');
+
+Route::put('/profile', [ProfileController::class, 'updateCredentials'])->name('profile.update-credentials');
 
 Route::resource('tasks', TaskController::class);
 
