@@ -7,7 +7,10 @@
     border: 1px solid #000;
 }
 .button-50{
-    width: calc(60vw - 30px);
+    width: calc(60vw - 30px) !important;
+}
+.button-50-a{
+    width: calc(60vw - 12px) !important;
 }
 .button-fill{
     width: calc(60vw + 12px);

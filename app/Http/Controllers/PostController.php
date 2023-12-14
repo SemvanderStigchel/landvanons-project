@@ -18,6 +18,7 @@ class PostController extends Controller
         $this->middleware(['auth', 'admin'])->except('index', 'show');
         $this->middleware('owner-post')->except('index', 'show', 'create', 'store');
     }
+
     public function index()
     {
         $posts = Post::all();
