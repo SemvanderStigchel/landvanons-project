@@ -13,6 +13,7 @@ class TaskController extends Controller
     {
         $this->middleware('auth')->except('index', 'show');
         $this->middleware('owner-task')->only('edit', 'update', 'destroy');
+        $this->middleware('admin')->except('index', 'show', 'enroll', 'unsubscribe', 'enrollSuccess');
     }
 
     /**

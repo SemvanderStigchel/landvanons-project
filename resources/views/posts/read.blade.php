@@ -13,7 +13,15 @@
 <header class="flex content-between align-center row mg-3 mg-bottom-0 ">
     <h1 class="text-large gray">Nieuws</h1>
     <div class="flex content-center align-center">
-        <a class="button button-outline border-purple purple-main decoration-none scrollAnimation" style="font-weight: bold; margin-left: 0;" href="{{route('posts.create')}}">Inloggen</a>
+        @guest
+            <a class="button button-outline border-purple purple-main decoration-none scrollAnimation" style="font-weight: bold; margin-left: 0;" href="{{route('login')}}">Inloggen</a>
+        @else
+            <a class="button button-outline border-purple purple-main decoration-none scrollAnimation" style="font-weight: bold; margin-left: 0;" href="{{ route('logout') }}"
+               onclick="event.preventDefault();
+                                                     document.getElementById('logout-form').submit();">
+                {{ __('Uitloggen') }}
+            </a>
+        @endguest
     </div>
 </header>
 <section class="flex row align-center content-center" style="width: 100vw">
@@ -40,7 +48,7 @@
 
 </section>
 <section class="w-100 flex align-center column content-center mg-top-5" style="margin-bottom: 40px;">
-    <h3 class="mg-3 gray scrollAnimation mg-bottom-1" style="width: 95vw">Vrijwillegers taken</h3>
+    <h3 class="mg-3 gray scrollAnimation mg-bottom-1" style="width: 95vw">Vrijwilligers taken</h3>
     @foreach($posts as $post)
     <div class="newsItem border-1 bg-white flex align-center mg-2 scrollAnimation shadow ">
         <img src="{{asset('uploads/posts/'.$post->image)}}" class="articleImg mg-3 border-1 object-cover" alt="uploaded image">
@@ -61,12 +69,6 @@
     @endguest
     @include('partials.navbar')
     <div>
-        <a class="dropdown-item" href="{{ route('logout') }}"
-           onclick="event.preventDefault();
-                                                     document.getElementById('logout-form').submit();">
-            {{ __('Logout') }}
-        </a>
-
         <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
             @csrf
         </form>
