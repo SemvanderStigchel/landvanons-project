@@ -8,7 +8,7 @@
     @vite(['resources/css/app.css', 'resources/js/app.js', 'resources/css/news.css'])
     <title>Profile</title>
 </head>
-<body style="background-color: #F6F7FC">
+<body style="background-color: #F6F7FC; overflow-x: hidden">
 <header class="pd-4" style="width: 100vw; height: 25vh; background-color: #72B94F; padding-top: 2rem;">
     <h1 class="mg-0 mg-top-0 white">Profiel</h1>
 </header>
@@ -45,7 +45,7 @@
         </div>
 
     </form>
-    <section style="transform: translateY(-40%)" class="w-100 flex align-center column">
+    <section style="margin-bottom: 100px" class="w-100 flex align-center column">
         <h2 class="gray mg-bottom-1">Ingeschreven vrijwilligerstaken</h2>
         <section class="w-100 flex align-center column content-center mg-top-2 mg-bottom-5">
             @foreach($user->enrollments as $task)
@@ -56,6 +56,7 @@
                         <p class="black mg-1">{{$task->name}}</p>
                         <p class="text-small gray mg-1">{{$task->date}}</p>
                     </div>
+                    <a href="{{route('tasks.show', $task)}}" style="position: absolute; right: 5%;" class="button button-outline green-main border-green decoration-none">Bekijk</a>
                 </div>
             @endforeach
         </section>
