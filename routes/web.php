@@ -38,3 +38,4 @@ Route::resource('tasks', TaskController::class);
 Route::post('/tasks/{task}/enroll', [TaskController::class, 'enroll'])->name('tasks.enroll');
 Route::post('/tasks/{task}/unsub', [TaskController::class, 'unsubscribe'])->name('tasks.unsub');
 Route::get('/tasks/{task}/enrolled', [TaskController::class, 'enrollSuccess'])->name('tasks.enroll-success');
+Route::patch('/tasks/{task}/pay-out', [TaskController::class, 'payOutPoints'])->name('tasks.pay-out-points');

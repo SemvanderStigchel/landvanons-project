@@ -56,6 +56,14 @@
             </form>
         @endif
 
+    @if($task->user_id === Auth::user()->id)
+                <form action="{{route('tasks.pay-out-points', $task)}}" method="POST">
+                    @csrf
+                    @method('PATCH')
+                    <button type="submit">Punten uitkeren</button>
+                </form>
+    @endif
+
         @if(Auth::user()->role === 2)
             <form action="{{route('tasks.edit', $task)}}" method="GET">
                 <button type="submit" class="edit-button">Edit</button>

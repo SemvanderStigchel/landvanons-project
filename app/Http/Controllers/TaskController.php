@@ -21,7 +21,8 @@ class TaskController extends Controller
      */
     public function index()
     {
-        $tasks = Task::all();
+        $tasks = Task::where('status', '=', null)->orWhere('status', '=', 1)->get();
+
         return view('task.read', compact('tasks'));
     }
 
@@ -57,6 +58,7 @@ class TaskController extends Controller
         $task->location = $request->input('location');
         $task->duration = $request->input('duration');
         $task->points_earned = $request->input('points');
+        $task->status = 1;
         $task->user_id = Auth::user()->id;
 
         if ($request->hasFile('image')) {
@@ -110,6 +112,7 @@ class TaskController extends Controller
         $task->location = $request->input('location');
         $task->duration = $request->input('duration');
         $task->points_earned = $request->input('points');
+        $task->status = 1;
         $task->user_id = Auth::user()->id;
 
         if ($request->hasFile('image')) {
@@ -157,5 +160,12 @@ class TaskController extends Controller
     public function enrollSuccess(Task $task)
     {
         return view('task.enrolled', compact('task'));
+    }
+
+    public function payOutPoints (Task $task)
+    {
+        $task->status = 2;
+        $task->save();
+        return redirect(route('tasks.show', compact('task')));
     }
 }
