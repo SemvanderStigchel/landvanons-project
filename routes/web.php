@@ -29,7 +29,7 @@ Route::resource('posts', PostController::class);
 
 Route::post('purchaseItem', [DecorationsController::class, 'purchase'])->name('item.purchase');
 
-Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
+Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard')->middleware('pay-out');
 
 Route::get('/profile', [ProfileController::class, 'show'])->name('profile');
 Route::put('/profile', [ProfileController::class, 'updateCredentials'])->name('profile.update-credentials');

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Task;
+use App\Models\User;
 use Auth;
 use File;
 use Illuminate\Http\Request;
@@ -14,6 +15,7 @@ class TaskController extends Controller
         $this->middleware('auth')->except('index', 'show');
         $this->middleware('owner-task')->only('edit', 'update', 'destroy');
         $this->middleware('admin')->except('index', 'show', 'enroll', 'unsubscribe', 'enrollSuccess');
+        $this->middleware('pay-out')->only('index');
     }
 
     /**
@@ -21,7 +23,7 @@ class TaskController extends Controller
      */
     public function index()
     {
-        $tasks = Task::where('status', '=', null)->orWhere('status', '=', 1)->get();
+        $tasks = Task::where('status', '=', 1)->whereDate('date', '>', date('Y-m-d'))->orderBy('date', 'asc')->get();
 
         return view('task.read', compact('tasks'));
     }

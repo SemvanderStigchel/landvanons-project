@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Category;
 use App\Models\Post;
+use App\Models\Task;
 use Auth;
 use File;
 use Illuminate\Http\Request;
@@ -21,8 +22,9 @@ class PostController extends Controller
 
     public function index()
     {
+        $tasks = Task::where('status', '=', 1)->whereDate('date', '>', date('Y-m-d'))->orderBy('date', 'asc')->limit(3)->get();
         $posts = Post::all();
-        return view('posts.read', compact('posts'));
+        return view('posts.read', compact('posts', 'tasks'));
     }
 
     /**

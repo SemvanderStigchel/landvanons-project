@@ -61,6 +61,25 @@
             @endforeach
         </section>
     </section>
+
+    @if(Auth::user()->role === 2)
+        <section style="margin-bottom: 100px" class="w-100 flex align-center column">
+            <h2 class="gray mg-bottom-1">Door jouw gemaakte taken</h2>
+            <section class="w-100 flex align-center column content-center mg-top-2 mg-bottom-5">
+                @foreach($user->tasks as $task)
+                    <div class="newsItem1 border-1 bg-white flex align-center mg-2 scrollAnimation shadow ">
+                        <img src="{{asset('uploads/tasks/'.$task->image)}}" class="articleImg mg-3 border-1 object-cover"
+                             alt="uploaded image">
+                        <div class="flex content-between column articleText">
+                            <p class="black mg-1">{{$task->name}}</p>
+                            <p class="text-small gray mg-1">{{$task->date}}</p>
+                        </div>
+                        <a href="{{route('tasks.show', $task)}}" style="position: absolute; right: 5%;" class="button button-outline green-main border-green decoration-none">Bekijk</a>
+                    </div>
+                @endforeach
+            </section>
+        </section>
+    @endif
 </div>
 @include('partials.navbar')
 </body>

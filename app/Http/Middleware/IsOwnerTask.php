@@ -21,6 +21,6 @@ class IsOwnerTask
         {
             return $next($request);
         }
-        return redirect(route('home'));
+        abort(403);
     }
 }

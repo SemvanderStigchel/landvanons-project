@@ -17,6 +17,7 @@ class DecorationsController extends Controller
     public function __construct()
     {
         $this->middleware('auth');
+        $this->middleware('pay-out')->only('index');
         $costArray = [0, 2, 4];
     }
 
