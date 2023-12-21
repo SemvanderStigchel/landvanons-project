@@ -27,27 +27,27 @@
         @csrf
         <div class="form-group">
             <label for="name">Naam*</label>
-            <input type="text" id="name" name="name" placeholder="Typ hier de naam van de vrijwilligerstaak" value="{{$task->name}}">
             @error('name')
-            <div>Error</div>
+            <div>{{$message}}</div>
             @enderror
+            <input type="text" id="name" name="name" placeholder="Typ hier de naam van de vrijwilligerstaak" value="{{$task->name}}">
         </div>
 
         <div class="form-group">
             <label for="description">Beschrijving*</label>
-            <textarea name="description" id="description" placeholder="Typ hier de tekst van de post" cols="50" rows="10">{{$task->description}}</textarea>
             @error('description')
-            <div>Error</div>
+            <div>{{$message}}</div>
             @enderror
+            <textarea name="description" id="description" placeholder="Typ hier de tekst van de post" cols="50" rows="10">{{$task->description}}</textarea>
         </div>
 
         <div class="form-group">
             <label for="image">Foto*</label>
+            @error('image')
+            <div>{{$message}}</div>
+            @enderror
             <input type="file" id="image" name="image" alt="Upload photo">
             <img src="{{asset('uploads/tasks/'.$task->image)}}" alt="Uploaded image" style="max-width: 100%; height: auto;">
-            @error('image')
-            <div>Error</div>
-            @enderror
         </div>
 
 

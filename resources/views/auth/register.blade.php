@@ -38,57 +38,53 @@
                                 @csrf
 
                                 <div class="flex column">
-                                    <input id="name" type="text"
-                                           placeholder="Naam"
-                                           class="scrollAnimation button button-outline mg-bottom-2 border-auth border-3 pd-3 gray button-50 form-control @error('name') is-invalid @enderror"
-                                           name="name"
-                                           value="{{ old('name') }}" required autocomplete="name" autofocus>
-
                                     @error('name')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
                                     </span>
                                     @enderror
+                                    <input id="name" type="text"
+                                           placeholder="Naam"
+                                           class="scrollAnimation button button-outline mg-bottom-2 border-auth border-3 pd-3 gray button-50 form-control @error('name') is-invalid @enderror"
+                                           name="name"
+                                           value="{{ old('name') }}" required autocomplete="name" autofocus>
                                 </div>
 
                                 <div class="flex column">
-                                    <input id="email" type="email"
-                                           class="scrollAnimation button button-outline mg-bottom-2 border-auth border-3 pd-3 gray button-50 form-control @error('email') is-invalid @enderror"
-                                           name="email"
-                                           placeholder="E-mailadres" value="{{ old('email') }}" required
-                                           autocomplete="email">
-
                                     @error('email')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
                                     </span>
                                     @enderror
+                                    <input id="email" type="email"
+                                           class="scrollAnimation button button-outline mg-bottom-2 border-auth border-3 pd-3 gray button-50 form-control @error('email') is-invalid @enderror"
+                                           name="email"
+                                           placeholder="E-mailadres" value="{{ old('email') }}" required
+                                           autocomplete="email">
                                 </div>
 
                                 <div class="flex column">
-                                    <input id="phone" type="text"
-                                           class="scrollAnimation button button-outline mg-bottom-2 border-auth border-3 pd-3 gray button-50 form-control @error('phone') is-invalid @enderror"
-                                           name="phone" placeholder="Telefoonnummer"
-                                           value="{{ old('phone') }}" required>
-
                                     @error('phone')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
                                     </span>
                                     @enderror
+                                    <input id="phone" type="text"
+                                           class="scrollAnimation button button-outline mg-bottom-2 border-auth border-3 pd-3 gray button-50 form-control @error('phone') is-invalid @enderror"
+                                           name="phone" placeholder="Telefoonnummer"
+                                           value="{{ old('phone') }}" required>
                                 </div>
 
                                 <div class="flex column">
-                                    <input id="password" type="password" placeholder="Wachtwoord"
-                                           class="scrollAnimation button button-outline mg-bottom-2 border-auth border-3 pd-3 gray button-50 form-control @error('password') is-invalid @enderror"
-                                           name="password"
-                                           required autocomplete="new-password">
-
                                     @error('password')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
                                     </span>
                                     @enderror
+                                    <input id="password" type="password" placeholder="Wachtwoord"
+                                           class="scrollAnimation button button-outline mg-bottom-2 border-auth border-3 pd-3 gray button-50 form-control @error('password') is-invalid @enderror"
+                                           name="password"
+                                           required autocomplete="new-password">
                                 </div>
 
                                 <div class="flex column">

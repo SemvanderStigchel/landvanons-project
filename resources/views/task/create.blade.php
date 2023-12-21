@@ -25,76 +25,76 @@
 
         <div class="form-group">
             <label for="name">Naam*</label>
+            @error('name')
+            <div>{{$message}}</div>
+            @enderror
             <input type="text" id="name" name="name" placeholder="Typ hier de naam van de vrijwilligerstaak"
                    value="{{ old('name') }}">
-            @error('name')
-            <div>Error</div>
-            @enderror
         </div>
 
         <div class="form-group">
             <label for="description">Beschrijving*</label>
+            @error('description')
+            <div>{{$message}}</div>
+            @enderror
             <textarea name="description" id="description" placeholder="Typ hier de tekst van de post" cols="150"
                       rows="5">{{ old('description') }}</textarea>
-            @error('description')
-            <div>Error</div>
-            @enderror
         </div>
 
         <div class="form-group">
             <label for="image">Foto*</label>
-            <input type="file" id="image" name="image" alt="Upload photo">
             @error('image')
             <div>{{ $message }}</div>
             @enderror
+            <input type="file" id="image" name="image" alt="Upload photo">
         </div>
 
         <div class="form-group">
             <label for="date">Datum*</label>
-            <input type="date" name="date" id="date" value="{{ old('date') }}">
             @error('date')
-            <div>Error</div>
+            <div>{{$message}}</div>
             @enderror
+            <input type="date" name="date" id="date" value="{{ old('date') }}">
         </div>
 
         <div class="form-group">
             <label for="time">Tijd*</label>
-            <input type="time" name="time" id="time" value="{{ old('time') }}">
             @error('time')
-            <div>Error</div>
+            <div>{{$message}}</div>
             @enderror
+            <input type="time" name="time" id="time" value="{{ old('time') }}">
         </div>
 
         <div class="form-group">
             <label for="location">Adres*</label>
+            @error('location')
+            <div>{{$message}}</div>
+            @enderror
             <input type="text" name="location" id="location"
                    placeholder="Typ hier het adres van de vrijwilligerstaak"
                    value="{{ old('location') }}">
-            @error('location')
-            <div>Error</div>
-            @enderror
         </div>
 
         <div class="form-group">
             <label for="duration">Hoe lang duurt de taak?*</label>
+            @error('duration')
+            <div>{{$message}}</div>
+            @enderror
             <input type="text" name="duration" id="duration"
                    placeholder="Typ hier hoe lang de taak gaat duren"
                    value="{{ old('duration') }}">
-            @error('duration')
-            <div>Error</div>
-            @enderror
         </div>
 
         <div class="form-group">
             <label for="points">Hoeveel punten krijgen mensen die hier aan mee doen?*</label>
+            @error('points')
+            <div>{{$message}}</div>
+            @enderror
             <select name="points" id="points">
                 <option value="50">50 punten</option>
                 <option value="100">100 punten</option>
                 <option value="150">150 punten</option>
             </select>
-            @error('points')
-            <div>Error</div>
-            @enderror
         </div>
 
         <button type="submit" class="inschrijf-button">Maak de post aan</button>
