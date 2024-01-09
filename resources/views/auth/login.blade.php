@@ -19,18 +19,23 @@
                         <form method="POST" action="{{ route('login') }}" id="submitForm">
                             @csrf
                             <div class="flex column">
+                                @error('email')
+                                <span class="invalid-feedback scrollAnimation" role="alert">
+                                        {{ $message }}
+                                    </span>
+                                @enderror
                                 <input id="email" type="email" style=""
                                        class="scrollAnimation button button-outline mg-bottom-3 border-auth border-3 pd-3 gray button-50 form-control @error('email') is-invalid @enderror"
                                        name="email" value="{{ old('email') }}" required autocomplete="email" autofocus
                                        placeholder="E-mailadres">
 
-                                @error('email')
-                                <span class="invalid-feedback scrollAnimation" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror
                             </div>
                             <div class="flex column">
+                                @error('password')
+                                <span class="invalid-feedback scrollAnimation" role="alert">
+                                        {{ $message }}
+                                    </span>
+                                @enderror
                                 <input id="password" type="password"
                                        class="scrollAnimation button button-outline border-auth border-3 button-50 pd-3 gray form-control @error('password') is-invalid @enderror"
                                        style="background-size: 20px;
@@ -38,11 +43,6 @@ padding-left:30px;"
                                        name="password" required autocomplete="current-password"
                                        placeholder="Wachtwoord">
 
-                                @error('password')
-                                <span class="invalid-feedback scrollAnimation" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror
                             </div>
 
                             <div class="">

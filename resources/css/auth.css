@@ -12,6 +12,11 @@
 .button-fill{
     width: calc(60vw + 12px);
 }
+
+.invalid-feedback span{
+    font-weight: normal;
+    font-size: 0.7rem;
+}
 #email,#password,#password-confirm,#name,#phone{
     background-size: 20px;
     padding-left:30px;

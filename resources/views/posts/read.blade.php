@@ -10,52 +10,56 @@
 </head>
 <body style="background-color: #F6F7FC">
 <main>
-<header class="flex content-between align-center row mg-3 mg-bottom-0 ">
-    <h1 class="text-large gray">Nieuws</h1>
-    <div class="flex content-center align-center">
-        <img class="mg-3" src="{{asset('images/search.svg')}}" alt="Search icon" style="width: 30px;">
-        <img src="{{asset('images/plantScanner.svg')}}" alt="plant scanner icon" style="width: 40px;">
-    </div>
-</header>
-<section class="flex row align-center content-center" style="width: 100vw">
-
+    <header class="flex content-between align-center row mg-3 mg-bottom-0 ">
+        <h1 class="text-large gray">Nieuws</h1>
+        <div class="flex content-center align-center">
+            <img class="mg-3" src="{{asset('images/search.svg')}}" alt="Search icon" style="width: 30px;">
+            <img src="{{asset('images/plantScanner.svg')}}" alt="plant scanner icon" style="width: 40px;">
+        </div>
+    </header>
+    <section class="flex row align-center content-center" style="width: 100vw">
+        <a href="" class="text-large white border-5 scrollAnimation decoration-none"
+           style="position: absolute; right: 5%; z-index: 99; background-color: rgba(0,0,0,0.28); padding: 5px 10px; ">＞</a>
         <div class="flex row align-center scrollAnimation" style="overflow: scroll; width: 95vw; ">
             @foreach($posts as $post)
-            <div class="article background-image border-1 column content-between flex mg-1 shadow"
-                 style="background-image: url('{{asset('uploads/posts/'.$post->image)}}')">
-                <div class="gradient-overlay"></div>
-                <div class="z-90 mg-2 mg-top-4">
-                @foreach($post->categories as $category)
-                    <a class="button button-slim bg-green-main mg-0 z-90"
-                       style="background-color: rgba(147, 208, 45, 0.50)">{{$category->name}}</a>
-                @endforeach
+                <div id="item <?=$post->id?>" class="article background-image border-1 column content-between flex mg-1 shadow"
+                     style="background-image: url('{{asset('uploads/posts/'.$post->image)}}')">
+                    <div class="gradient-overlay"></div>
+                    <div class="z-90 mg-2 mg-top-4">
+                        @foreach($post->categories as $category)
+                            <a class="button button-slim bg-green-main mg-0 z-90"
+                               style="background-color: rgba(147, 208, 45, 0.50)">{{$category->name}}</a>
+                        @endforeach
+                    </div>
+                    <div class="mg-2 mg-top-0 z-90" style="margin-bottom: 2rem">
+                        <h2 class="white mg-0" style="font-weight: normal">{{$post->title}}</h2>
+                        <p class="mg-0 light-gray-main z-90" style="font-size: 0.7rem">14/11/2023</p>
+                    </div>
+                    <a class="mg-2 white show-more text-medium decoration-none z-90" style="width: unset !important;"
+                       href="{{route('posts.show', $post)}}">Lees Meer</a>
                 </div>
-                <div class="mg-2 mg-top-0 z-90" style="margin-bottom: 2rem">
-                    <h2 class="white mg-0" style="font-weight: normal">{{$post->title}}</h2>
-                    <p class="mg-0 light-gray-main z-90" style="font-size: 0.7rem">14/11/2023</p>
-                </div>
-                    <a class="mg-2 white show-more text-medium decoration-none z-90" style="width: unset !important;" href="{{route('posts.show', $post)}}">Lees Meer</a>
-            </div>
             @endforeach
         </div>
 
-</section>
-<section class="w-100 flex align-center column content-center mg-top-5 ">
-    @foreach($posts as $post)
-    <div class="newsItem border-1 bg-white flex align-center mg-2 scrollAnimation shadow ">
-        <img src="{{asset('uploads/posts/'.$post->image)}}" class="articleImg mg-3 border-1 object-cover" alt="uploaded image">
-        <div class="flex content-between column articleText">
-            <p class="black mg-1">{{$post->title}}</p>
-            <p class="text-small gray mg-1">Land Van Ons</p>
-        </div>
-    </div>
-    @endforeach
-</section>
+    </section>
+    <section class="w-100 flex align-center column content-center mg-top-5 ">
+        @foreach($posts as $post)
+            <div class="newsItem border-1 bg-white flex align-center mg-2 scrollAnimation shadow ">
+                <img src="{{asset('uploads/posts/'.$post->image)}}" class="articleImg mg-3 border-1 object-cover"
+                     alt="uploaded image">
+                <div class="flex content-between column articleText">
+                    <p class="black mg-1">{{$post->title}}</p>
+                    <p class="text-small gray mg-1">Land Van Ons</p>
+                </div>
+            </div>
+        @endforeach
+    </section>
     @guest
     @else
         @if(Auth::user()->role === 2)
             <footer class="mg-3">
-                <a class="button button-outline border-purple purple-main decoration-none " style="font-weight: bold; margin-left: 0;" href="{{route('posts.create')}}">Create Post</a>
+                <a class="button button-outline border-purple purple-main decoration-none "
+                   style="font-weight: bold; margin-left: 0;" href="{{route('posts.create')}}">Create Post</a>
             </footer>
         @endif
     @endguest
