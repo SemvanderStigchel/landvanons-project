@@ -23,7 +23,7 @@ class PostController extends Controller
     public function index()
     {
         $tasks = Task::where('status', '=', 1)->whereDate('date', '>', date('Y-m-d'))->orderBy('date', 'asc')->limit(3)->get();
-        $posts = Post::all();
+        $posts = Post::latest()->limit(5)->get();
         return view('posts.read', compact('posts', 'tasks'));
     }
 
