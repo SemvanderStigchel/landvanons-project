@@ -13,8 +13,17 @@
     <header class="flex content-between align-center row mg-3 mg-bottom-0 ">
         <h1 class="text-large gray">Nieuws</h1>
         <div class="flex content-center align-center">
-            <img class="mg-3" src="{{asset('images/search.svg')}}" alt="Search icon" style="width: 30px;">
-            <img src="{{asset('images/plantScanner.svg')}}" alt="plant scanner icon" style="width: 40px;">
+            @guest
+                <a class="button button-outline border-purple purple-main decoration-none scrollAnimation"
+                   style="font-weight: bold; margin-left: 0;" href="{{route('login')}}">Inloggen</a>
+            @else
+                <a class="button button-outline border-purple purple-main decoration-none scrollAnimation"
+                   style="font-weight: bold; margin-left: 0;" href="{{ route('logout') }}"
+                   onclick="event.preventDefault();
+                                                     document.getElementById('logout-form').submit();">
+                    {{ __('Uitloggen') }}
+                </a>
+            @endguest
         </div>
     </header>
     <section class="flex row align-center content-center" style="width: 100vw">
@@ -22,7 +31,7 @@
            style="position: absolute; right: 5%; z-index: 99; background-color: rgba(0,0,0,0.28); padding: 5px 10px; ">＞</a>
         <div class="flex row align-center scrollAnimation" style="overflow: scroll; width: 95vw; ">
             @foreach($posts as $post)
-                <div id="item <?=$post->id?>" class="article background-image border-1 column content-between flex mg-1 shadow"
+                <div class="article background-image border-1 column content-between flex mg-1 shadow"
                      style="background-image: url('{{asset('uploads/posts/'.$post->image)}}')">
                     <div class="gradient-overlay"></div>
                     <div class="z-90 mg-2 mg-top-4">
@@ -33,44 +42,42 @@
                     </div>
                     <div class="mg-2 mg-top-0 z-90" style="margin-bottom: 2rem">
                         <h2 class="white mg-0" style="font-weight: normal">{{$post->title}}</h2>
-                        <p class="mg-0 light-gray-main z-90" style="font-size: 0.7rem">14/11/2023</p>
+                        <p class="mg-0 light-gray-main z-90" style="font-size: 0.7rem">{{$post->created_at}}</p>
                     </div>
-                    <a class="mg-2 white show-more text-medium decoration-none z-90" style="width: unset !important;"
+                    <a class="mg-2 white show-more text-medium decoration-none z-90"
+                       style="width: unset !important;"
                        href="{{route('posts.show', $post)}}">Lees Meer</a>
                 </div>
             @endforeach
         </div>
 
     </section>
-    <section class="w-100 flex align-center column content-center mg-top-5 ">
-        @foreach($posts as $post)
-            <div class="newsItem border-1 bg-white flex align-center mg-2 scrollAnimation shadow ">
-                <img src="{{asset('uploads/posts/'.$post->image)}}" class="articleImg mg-3 border-1 object-cover"
-                     alt="uploaded image">
-                <div class="flex content-between column articleText">
-                    <p class="black mg-1">{{$post->title}}</p>
-                    <p class="text-small gray mg-1">Land Van Ons</p>
+    <section class="w-100 flex align-center column content-center mg-top-5" style="margin-bottom: 40px;">
+        <h3 class="mg-3 gray scrollAnimation mg-bottom-1" style="width: 95vw">Vrijwilligers taken</h3>
+        @foreach($tasks as $task)
+            <a href="{{route('tasks.show', $task)}}" class="decoration-none">
+                <div class="newsItem border-1 bg-white flex align-center mg-2 scrollAnimation shadow ">
+                    <img src="{{asset('uploads/tasks/'.$task->image)}}" class="articleImg mg-3 border-1 object-cover"
+                         alt="uploaded image">
+                    <div class="flex content-between column articleText">
+                        <p class="black mg-1">{{$task->name}}</p>
+                        <p class="text-small gray mg-1">Land Van Ons</p>
+                    </div>
                 </div>
-            </div>
+            </a>
         @endforeach
     </section>
     @guest
     @else
         @if(Auth::user()->role === 2)
-            <footer class="mg-3">
-                <a class="button button-outline border-purple purple-main decoration-none "
+            <footer class="mg-3" style="margin-bottom: 100px">
+                <a class="button button-outline border-purple purple-main decoration-none scrollAnimation"
                    style="font-weight: bold; margin-left: 0;" href="{{route('posts.create')}}">Create Post</a>
             </footer>
         @endif
     @endguest
     @include('partials.navbar')
     <div>
-        <a class="dropdown-item" href="{{ route('logout') }}"
-           onclick="event.preventDefault();
-                                                     document.getElementById('logout-form').submit();">
-            {{ __('Logout') }}
-        </a>
-
         <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
             @csrf
         </form>

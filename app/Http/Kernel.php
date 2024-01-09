@@ -2,8 +2,10 @@
 
 namespace App\Http;
 
+use App\Http\Middleware\IsOwnerTask;
 use App\Http\Middleware\IsAdmin;
 use App\Http\Middleware\IsOwnerPost;
+use App\Http\Middleware\PayOutPoints;
 use Illuminate\Foundation\Http\Kernel as HttpKernel;
 
 class Kernel extends HttpKernel
@@ -68,5 +70,7 @@ class Kernel extends HttpKernel
         'verified' => \Illuminate\Auth\Middleware\EnsureEmailIsVerified::class,
         'admin' => IsAdmin::class,
         'owner-post' => IsOwnerPost::class,
+        'owner-task' => IsOwnerTask::class,
+        'pay-out' => PayOutPoints::class
     ];
 }

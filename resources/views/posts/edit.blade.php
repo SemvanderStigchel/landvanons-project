@@ -40,7 +40,7 @@
                    style="max-width: 85vw; font-size: 1.4rem" type="text" id="title" name="title" placeholder="Titel"
                    value="{{$post->title}}">
             @error('title')
-            <div>Error</div>
+            <div>{{$message}}</div>
             @enderror
         </div>
     </div>
@@ -52,19 +52,19 @@
                id="subtitle" name="subtitle" placeholder="Ondertiteling"
                value="{{$post->subtitle}}">
         @error('subtitle')
-        <div>Error</div>
+        <div>{{$message}}</div>
         @enderror
         <label for="article" class="gray text-medium mg-1" style="font-weight: bold;">Artikel</label>
         <textarea class="button button-outline border-black gray" style="width: 80vw;" name="article" id="article"
                   placeholder="Typ hier de tekst van de nieuwspost" rows="20"
         >{{$post->article}}</textarea>
         @error('article')
-        <div>Error</div>
+        <div>{{$message}}</div>
         @enderror
         <label for="image" class="gray text-medium mg-1" style="font-weight: bold">Foto*</label>
         <input type="file" id="image" name="image" alt="Upload photo" class="button bg-green-main white">
         @error('image')
-        <div>Error</div>
+        <div>{{$message}}</div>
         @enderror
     </section>
 
@@ -75,7 +75,7 @@
         <label for="category{{$category->id}}">{{$category->name}}</label>
     @endforeach
     @error('categories')
-    <div>Error</div>
+    <div>{{$message}}</div>
     @enderror
     <div class="mg-5">
         <input type="button" onclick="btnSearchClick()" value="Update post"
@@ -83,7 +83,7 @@
     </div>
 </form>
 <div class="w-100 flex align-center content-center">
-    <img id="check" src="{{asset('images/loading.webp')}}" style="width: 50px; opacity: 0;">
+    <img id="check" src="{{asset('images/loading.webp')}}" style="width: 50px; opacity: 0;" alt="header image">
 </div>
 
 </body>

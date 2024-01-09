@@ -2,13 +2,12 @@
 
 namespace App\Http\Middleware;
 
-use App\Models\Post;
-use App\Models\Task;
+use Auth;
 use Closure;
 use Illuminate\Http\Request;
 use Symfony\Component\HttpFoundation\Response;
 
-class IsOwnerPost
+class IsOwnerTask
 {
     /**
      * Handle an incoming request.
@@ -17,8 +16,8 @@ class IsOwnerPost
      */
     public function handle(Request $request, Closure $next): Response
     {
-        $post = $request->route('post');
-        if (\Auth::user()->id === $post->user_id)
+        $task = $request->route('task');
+        if (Auth::user()->id === $task->user_id)
         {
             return $next($request);
         }
