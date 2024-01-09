@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AccountDashboardController;
 use App\Http\Controllers\TaskController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\PostController;
@@ -39,3 +40,8 @@ Route::post('/tasks/{task}/enroll', [TaskController::class, 'enroll'])->name('ta
 Route::post('/tasks/{task}/unsub', [TaskController::class, 'unsubscribe'])->name('tasks.unsub');
 Route::get('/tasks/{task}/enrolled', [TaskController::class, 'enrollSuccess'])->name('tasks.enroll-success');
 Route::patch('/tasks/{task}/pay-out', [TaskController::class, 'payOutPoints'])->name('tasks.pay-out-points');
+
+Route::get('/accounts-dashboard', [AccountDashboardController::class, 'index'])->name('account-dashboard');
+Route::post('/accounts-dashboard/{user}/make-admin', [AccountDashboardController::class, 'makeAdmin'])->name('account-dashboard.make-admin');
+Route::post('/accounts-dashboard/{user}/make-user', [AccountDashboardController::class, 'makeNormalUser'])->name('account-dashboard.make-user');
+Route::get('/accounts-dashboard/search', [AccountDashboardController::class, 'search'])->name('account-dashboard.search');
