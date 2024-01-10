@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class AccountDashboardController extends Controller
 {
@@ -13,6 +14,7 @@ class AccountDashboardController extends Controller
         $this->middleware('auth');
         $this->middleware('admin');
     }
+
     function index()
     {
         $users = User::all();

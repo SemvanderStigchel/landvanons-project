@@ -9,46 +9,45 @@
     @vite(['resources/css/app.css', 'resources/js/app.js', 'resources/css/news.css'])
 </head>
 <body style="background-color: #F6F7FC">
-<h1>Alle accounts</h1>
-
-<form action="{{route('account-dashboard.search')}}" method="GET">
+<header style="width: 100vw; height: 20vh;" class="bg-purple-main flex align-center mg-bottom-4">
+    <h1 class="pd-3 mg-top-0 mg-bottom-0 white">Alle accounts</h1>
+</header>
+@include('partials.navbar')
+<form action="{{route('account-dashboard.search')}}" method="GET" style="width: 100vw;"
+      class="flex align-center content-center row">
     @csrf
     <input type="text" placeholder="Zoek een gebruiker"
-           aria-label="Search bar" name="search" value="{{Request::get('search')}}">
-    <button type="submit">Zoek</button>
+           aria-label="Search bar" name="search" class="button button-outline border-auth border-1 button-50 pd-2 gray" style="border: 2px solid gray;" value="{{Request::get('search')}}">
+    <button type="submit" class="button button-slim bg-green-main">Zoek</button>
 </form>
-<table>
+<table style="width: 100vw;" class="flex align-center column">
     <tr>
-        <th>Naam</th>
-        <th>Email</th>
-        <th>Telefoonnummer</th>
-        <th>Rol</th>
-        <th>Maak admin</th>
+        <th class="gray">Naam</th>
+        <th class="gray">Type account</th>
     </tr>
     @foreach($users as $user)
         <tr>
             <td>{{$user->name}}</td>
-            <td>{{$user->email}}</td>
-            <td>{{$user->phone}}</td>
-            <td>@if($user->role === 2)
-                    Admin
+            @if($user->id !== Auth::id())
+                @if($user->role === 2)
+                    <td>
+                        <form action="{{route('account-dashboard.make-user', $user)}}" method="POST">
+                            @csrf
+                            <button type="submit" class="button button-slim text-small white"
+                                    style="background-color: red; width: 100px;">Admin
+                            </button>
+                        </form>
+                    </td>
                 @else
-                    Gebruiker
-                @endif</td>
-            @if($user->role === 2)
-                <td>
-                    <form action="{{route('account-dashboard.make-user', $user)}}" method="POST">
-                        @csrf
-                        <button type="submit">Maak Gebruiker</button>
-                    </form>
-                </td>
-            @else
-                <td>
-                    <form action="{{route('account-dashboard.make-admin', $user)}}" method="POST">
-                        @csrf
-                        <button type="submit">Maak Admin</button>
-                    </form>
-                </td>
+                    <td>
+                        <form action="{{route('account-dashboard.make-admin', $user)}}" method="POST">
+                            @csrf
+                            <button type="submit" class="button button-slim text-small bg-green-light white"
+                                    style="width: 100px;">Gebruiker
+                            </button>
+                        </form>
+                    </td>
+                @endif
             @endif
         </tr>
     @endforeach
