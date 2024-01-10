@@ -1,4 +1,3 @@
-
 @import url('https://fonts.googleapis.com/css2?family=Source+Sans+3:wght@400;695&display=swap');
 
 :root {
@@ -16,6 +15,7 @@
     --global-font: 'Source Sans 3', sans-serif;
 
 }
+
 
 html {
     font-family: var(--global-font);
@@ -40,27 +40,35 @@ body {
     margin: 0.25rem;
     width: min-content;
 }
-.button-slim{
+
+.button-slim {
     padding: 0.5rem 1.5rem;
 }
-.button-outline{
+
+.button-outline {
     background-color: rgba(255, 255, 255, 0) !important;
 }
-.border-white{
+
+.border-white {
     border: 0.1rem solid var(--white);
 }
-.border-green{
+
+.border-green {
     border: 0.1rem solid var(--bg-green-main);
 }
-.border-purple{
+
+.border-purple {
     border: 0.1rem solid var(--bg-purple-main);
 }
-.border-red{
+
+.border-red {
     border: 0.1rem solid var(--red);
 }
-.border-black{
+
+.border-black {
     border: 0.1rem solid black;
 }
+
 nav {
     width: 100vw;
     height: clamp(60px, 20vw, 90px);
@@ -69,7 +77,6 @@ nav {
     align-items: center;
     background-color: white;
 }
-
 
 
 .navIcon {
@@ -85,9 +92,11 @@ nav {
 .green-main {
     color: var(--bg-green-main);
 }
-.red{
+
+.red {
     color: var(--red);
 }
+
 .bg-green-main {
     background-color: var(--bg-green-main);
 }
@@ -107,9 +116,11 @@ nav {
 .bg-purple-main {
     background-color: var(--bg-purple-main);
 }
-.gray{
+
+.gray {
     color: var(--gray);
 }
+
 .bg-green-main {
     background-color: var(--bg-green-main);
 }
@@ -125,9 +136,11 @@ nav {
 .white {
     color: var(--white);
 }
-.black{
+
+.black {
     color: var(--black);
 }
+
 .bg-white {
     background-color: var(--white);
 }
@@ -231,42 +244,54 @@ nav {
     margin: 2rem;
 }
 
-.mg-bottom-0{
+.mg-bottom-0 {
     margin-bottom: 0;
 }
-.mg-top-0{
+
+.mg-top-0 {
     margin-top: 0;
 }
-.mg-top-1{
+
+.mg-top-1 {
     margin-top: 0.25rem;
 }
-.mg-top-2{
+
+.mg-top-2 {
     margin-top: 0.5rem;
 }
-.mg-top-3{
+
+.mg-top-3 {
     margin-top: 0.75rem;
 }
-.mg-top-4{
+
+.mg-top-4 {
     margin-top: 1rem;
 }
-.mg-top-5{
+
+.mg-top-5 {
     margin-top: 2rem;
 }
-.mg-bottom-1{
+
+.mg-bottom-1 {
     margin-bottom: 0.25rem;
 }
-.mg-bottom-2{
+
+.mg-bottom-2 {
     margin-bottom: 0.5rem;
 }
-.mg-bottom-3{
+
+.mg-bottom-3 {
     margin-bottom: 0.75rem;
 }
-.mg-bottom-4{
+
+.mg-bottom-4 {
     margin-bottom: 1rem;
 }
-.mg-bottom-5{
+
+.mg-bottom-5 {
     margin-bottom: 2rem;
 }
+
 .pd-0 {
     padding: 0;
 }
@@ -310,72 +335,92 @@ nav {
 .w-100 {
     width: 100%;
 }
-.border-0{
+
+.border-0 {
     border-radius: 0;
 }
-.border-1{
+
+.border-1 {
     border-radius: 0.5rem;
 }
-.border-2{
+
+.border-2 {
     border-radius: 0.7rem;
 }
-.border-3{
+
+.border-3 {
     border-radius: 1rem;
 }
-.border-4{
+
+.border-4 {
     border-radius: 1.25rem;
 }
-.border-5{
+
+.border-5 {
     border-radius: 1.5rem;
 }
-.border-6{
+
+.border-6 {
     border-radius: 1.75rem;
 }
 
-.background-image{
+.background-image {
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
 
 }
-.background-attach{
+
+.background-attach {
     background-attachment: fixed;
 }
-.flex-wrap{
+
+.flex-wrap {
     flex-wrap: wrap;
 }
-.flex-wrap-reverse{
+
+.flex-wrap-reverse {
     flex-wrap: wrap-reverse;
 }
-.no-wrap{
+
+.no-wrap {
     flex-wrap: nowrap;
 }
-.border-bottom{
-    -webkit-box-shadow: inset 0 -6px 0 0 rgba(0,0,0,0.3);
-    box-shadow: inset 0 -6px 0 0 rgba(0,0,0,0.3);
+
+.border-bottom {
+    -webkit-box-shadow: inset 0 -6px 0 0 rgba(0, 0, 0, 0.3);
+    box-shadow: inset 0 -6px 0 0 rgba(0, 0, 0, 0.3);
 }
-.shadow{
-    -webkit-box-shadow: 5px 5px 5px 0 rgba(0,0,0,0.18);
-    box-shadow: 5px 5px 5px 0 rgba(0,0,0,0.18);
+
+.shadow {
+    -webkit-box-shadow: 5px 5px 5px 0 rgba(0, 0, 0, 0.18);
+    box-shadow: 5px 5px 5px 0 rgba(0, 0, 0, 0.18);
 }
-.text-small{
+
+.text-small {
     font-size: 0.75rem;
 }
-.text-medium{
+
+.text-medium {
     font-size: 1rem;
 }
-.text-large{
+
+.text-large {
     font-size: 1.5rem;
 }
-.decoration-none{
+
+.decoration-none {
     text-decoration: none;
 }
-.z-90{
+
+.z-90 {
     z-index: 90;
 }
-.object-cover{
+
+.object-cover {
     object-fit: cover;
 }
+
 @keyframes fade-in {
     from {
         transform: translateX(-3rem);
@@ -396,4 +441,55 @@ nav {
 .scrollAnimation.visible {
     opacity: 1;
     transform: translateY(0);
+}
+
+.medal {
+    animation: zoomAnimation 900ms;
+}
+
+#star2 {
+    animation: StarFade1 2000ms;
+    animation-fill-mode: forwards;
+}
+
+@keyframes zoomAnimation {
+    0% {
+        opacity: 0;
+        transform: rotateZ(20deg) rotateY(50deg);
+    }
+    100% {
+        opacity: 1;
+    }
+}
+
+@keyframes StarFade1 {
+    0% {
+        opacity: 0;
+    }
+    10% {
+        opacity: 1;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+
+@keyframes zoomAnimation {
+    0% {
+        opacity: 0;
+        transform: rotateZ(20deg) rotateY(50deg);
+    }
+    100% {
+        opacity: 1;
+    }
+}
+
+@keyframes zoomAnimation {
+    0% {
+        opacity: 0;
+        transform: rotateZ(20deg) rotateY(50deg);
+    }
+    100% {
+        opacity: 1;
+    }
 }

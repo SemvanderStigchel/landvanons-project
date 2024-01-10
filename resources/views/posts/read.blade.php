@@ -72,7 +72,7 @@
         @if(Auth::user()->role === 2)
             <footer class="mg-3" style="margin-bottom: 100px">
                 <a class="button button-outline border-purple purple-main decoration-none scrollAnimation"
-                   style="font-weight: bold; margin-left: 0;" href="{{route('posts.create')}}">Create Post</a>
+                   style="font-weight: bold; margin-left: 0;" href="{{route('posts.create')}}">Nieuwe Post</a>
             </footer>
         @endif
     @endguest

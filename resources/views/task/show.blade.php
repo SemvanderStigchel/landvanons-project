@@ -60,7 +60,7 @@
             <form action="{{route('tasks.pay-out-points', $task)}}" method="POST">
                 @csrf
                 @method('PATCH')
-                <button type="submit">Punten uitkeren</button>
+                <button type="submit" style="background-color: #ffff; border: 2px solid #519238; color: #519238;">Punten uitkeren</button>
             </form>
         @endif
 

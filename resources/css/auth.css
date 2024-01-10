@@ -16,14 +16,16 @@
     width: calc(60vw + 12px);
 }
 
-.invalid-feedback span{
+.invalid-feedback{
     font-weight: normal;
     font-size: 0.7rem;
 }
+
 #email,#password,#password-confirm,#name,#phone{
     background-size: 20px;
     padding-left:30px;
 }
+
 #name{
     background: url("../images/person3.png") no-repeat scroll 6px;
 }
