@@ -24,7 +24,8 @@ class PostController extends Controller
     {
         $tasks = Task::where('status', '=', 1)->whereDate('date', '>', date('Y-m-d'))->orderBy('date', 'asc')->limit(3)->get();
         $posts = Post::latest()->limit(5)->get();
-        return view('posts.read', compact('posts', 'tasks'));
+        $postToLink = $posts[count($posts)-1];
+        return view('posts.read', compact('posts', 'tasks', 'postToLink'));
     }
 
     /**

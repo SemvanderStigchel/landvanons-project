@@ -20,6 +20,7 @@
 html {
     font-family: var(--global-font);
     scroll-behavior: smooth;
+    overflow-scrolling: auto;
 }
 
 body {

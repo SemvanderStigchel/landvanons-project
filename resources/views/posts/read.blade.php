@@ -27,11 +27,11 @@
         </div>
     </header>
     <section class="flex row align-center content-center" style="width: 100vw">
-        <a href="" class="text-large white border-5 scrollAnimation decoration-none"
+        <a href="#{{$postToLink->id}}" class="text-large white border-5 scrollAnimation decoration-none"
            style="position: absolute; right: 5%; z-index: 99; background-color: rgba(0,0,0,0.28); padding: 5px 10px; ">＞</a>
         <div class="flex row align-center scrollAnimation" style="overflow: scroll; width: 95vw; ">
             @foreach($posts as $post)
-                <div class="article background-image border-1 column content-between flex mg-1 shadow"
+                <div id="{{$post->id}}" class="article background-image border-1 column content-between flex mg-1 shadow"
                      style="background-image: url('{{asset('uploads/posts/'.$post->image)}}')">
                     <div class="gradient-overlay"></div>
                     <div class="z-90 mg-2 mg-top-4">
