@@ -45,10 +45,11 @@
         </div>
 
     </form>
-    <section style="transform: translateY(-40%)" class="w-100 flex align-center column">
+    <section style="transform: translateY(-20%)" class="w-100 flex align-center column">
         <h2 class="gray mg-bottom-1">Ingeschreven vrijwilligerstaken</h2>
         <section class="w-100 flex align-center column content-center mg-top-2 mg-bottom-5">
             @foreach($user->enrollments as $task)
+                <a href="{{route('tasks.show', $task)}}" style="text-decoration: none">
                 <div class="newsItem1 border-1 bg-white flex align-center mg-2 scrollAnimation shadow ">
                     <img src="{{asset('uploads/tasks/'.$task->image)}}" class="articleImg mg-3 border-1 object-cover"
                          alt="uploaded image">
@@ -57,6 +58,7 @@
                         <p class="text-small gray mg-1">{{$task->date}}</p>
                     </div>
                 </div>
+                </a>
             @endforeach
         </section>
     </section>
