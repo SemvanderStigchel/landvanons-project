@@ -31,23 +31,25 @@
            style="position: absolute; right: 5%; z-index: 99; background-color: rgba(0,0,0,0.28); padding: 5px 10px; ">＞</a>
         <div class="flex row align-center scrollAnimation" style="overflow: scroll; width: 95vw; ">
             @foreach($posts as $post)
-                <div id="{{$post->id}}" class="article background-image border-1 column content-between flex mg-1 shadow"
-                     style="background-image: url('{{asset('uploads/posts/'.$post->image)}}')">
-                    <div class="gradient-overlay"></div>
-                    <div class="z-90 mg-2 mg-top-4">
-                        @foreach($post->categories as $category)
-                            <a class="button button-slim bg-green-main mg-0 z-90"
-                               style="background-color: rgba(147, 208, 45, 0.50)">{{$category->name}}</a>
-                        @endforeach
+                <a href="{{route('posts.show', $post)}}" class="decoration-none">
+                    <div id="{{$post->id}}"
+                         class="article background-image border-1 column content-between flex mg-1 shadow"
+                         style="background-image: url('{{asset('uploads/posts/'.$post->image)}}')">
+                        <div class="gradient-overlay"></div>
+                        <div class="z-90 mg-2 mg-top-4">
+                            @foreach($post->categories as $category)
+                                <span class="button button-slim bg-green-main mg-0 z-90"
+                                      style="background-color: rgba(147, 208, 45, 0.50)">{{$category->name}}</span>
+                            @endforeach
+                        </div>
+                        <div class="mg-2 mg-top-0 z-90" style="margin-bottom: 2rem">
+                            <h2 class="white mg-0" style="font-weight: normal">{{$post->title}}</h2>
+                            <p class="mg-0 light-gray-main z-90" style="font-size: 0.7rem">{{$post->created_at}}</p>
+                        </div>
+                        <p class="mg-2 white show-more text-medium decoration-none z-90"
+                           style="width: unset !important;">Lees Meer</p>
                     </div>
-                    <div class="mg-2 mg-top-0 z-90" style="margin-bottom: 2rem">
-                        <h2 class="white mg-0" style="font-weight: normal">{{$post->title}}</h2>
-                        <p class="mg-0 light-gray-main z-90" style="font-size: 0.7rem">{{$post->created_at}}</p>
-                    </div>
-                    <a class="mg-2 white show-more text-medium decoration-none z-90"
-                       style="width: unset !important;"
-                       href="{{route('posts.show', $post)}}">Lees Meer</a>
-                </div>
+                </a>
             @endforeach
         </div>
 
