@@ -11,6 +11,10 @@
 <body style="background-color: #F6F7FC; overflow-x: hidden">
 <header class="pd-4" style="width: 100vw; height: 25vh; background-color: #72B94F; padding-top: 2rem;">
     <h1 class="mg-0 mg-top-0 white">Profiel</h1>
+    @if($user->role === 2)
+        <a href="{{route('account-dashboard')}}" class="button white bg-purple-main button-fill decoration-none mg-0">Admin
+            dashboard</a>
+    @endif
 </header>
 <div class="container bg-white flex column align-center" style="width: 100vw;">
     <form action="{{route('profile.update-credentials')}}" method="POST"
@@ -50,18 +54,39 @@
         <section class="w-100 flex align-center column content-center mg-top-2 mg-bottom-5">
             @foreach($user->enrollments as $task)
                 <a href="{{route('tasks.show', $task)}}" style="text-decoration: none">
-                <div class="newsItem1 border-1 bg-white flex align-center mg-2 scrollAnimation shadow ">
-                    <img src="{{asset('uploads/tasks/'.$task->image)}}" class="articleImg mg-3 border-1 object-cover"
-                         alt="uploaded image">
-                    <div class="flex content-between column articleText">
-                        <p class="black mg-1">{{$task->name}}</p>
-                        <p class="text-small gray mg-1">{{$task->date}}</p>
+                    <div class="newsItem1 border-1 bg-white flex align-center mg-2 scrollAnimation shadow ">
+                        <img src="{{asset('uploads/tasks/'.$task->image)}}"
+                             class="articleImg mg-3 border-1 object-cover"
+                             alt="uploaded image">
+                        <div class="flex content-between column articleText">
+                            <p class="black mg-1">{{$task->name}}</p>
+                            <p class="text-small gray mg-1">{{$task->date}}</p>
+                        </div>
                     </div>
-                </div>
                 </a>
             @endforeach
         </section>
     </section>
+    @if($user->role === 2)
+        <section style="transform: translateY(-10%)" class="w-100 flex align-center column">
+            <h2 class="gray mg-bottom-1">Aangemaakte vrijwilligerstaken</h2>
+            <section class="w-100 flex align-center column content-center mg-top-2 mg-bottom-5">
+                @foreach($user->tasks as $task)
+                    <a href="{{route('tasks.show', $task)}}" style="text-decoration: none">
+                        <div class="newsItem1 border-1 bg-white flex align-center mg-2 scrollAnimation shadow ">
+                            <img src="{{asset('uploads/tasks/'.$task->image)}}"
+                                 class="articleImg mg-3 border-1 object-cover"
+                                 alt="uploaded image">
+                            <div class="flex content-between column articleText">
+                                <p class="black mg-1">{{$task->name}}</p>
+                                <p class="text-small gray mg-1">{{$task->date}}</p>
+                            </div>
+                        </div>
+                    </a>
+                @endforeach
+            </section>
+        </section>
+    @endif
 </div>
 @include('partials.navbar')
 </body>
